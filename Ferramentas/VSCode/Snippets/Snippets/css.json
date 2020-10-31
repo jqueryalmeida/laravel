@@ -1,0 +1,289 @@
+{
+	"Reset mínimo": {
+		"prefix": "reset_rfs",
+		"body": [
+			"/* Reset mínimo */",
+			"* {",
+			"  margin: 0;",
+			"  padding: 0;",
+			"  font-size: 1em;",
+			"  font-family: inherit;",
+			"}",
+			"",
+			"html {",
+			"  font-size: 62.5%;",
+			"}",
+			"/*https://ehtmlu.com/blog/a-simple-css-reset/*/"
+		],
+		"description": "Reset mínimo"
+	},
+
+	"Estilo básico para o body": {
+		"prefix": "body_rfs",
+		"body": [
+			"/* Estilizando o elemento body */",
+			"body {",
+			"   font-family: Georgia, \"Times New Roman\", Times, serif;",
+			"   margin: 1.2em;",
+			"   font-size: 1em;",
+			"   color: #000000;",
+			"   background-color: #f4eded;",
+			"   background-image: url(\"images/bg.jpg\");",
+			"}",
+			""
+		],
+		"description": "Estilo básico para o body"
+	},
+
+	"Container para a página": {
+		"prefix": "container_rfs",
+		"body": [
+		  "/* Container para a página ou outra região da mesma em <main> */",
+		  "main{",
+		  "    text-align: center;",
+		  "    background-color: #def9f0;",
+		  "    width: 95%;",
+		  "    margin: 3%;/* Caso width e margin somem 100% a margem direita desaparecerá */",
+		  "}",
+		  ""
+		],
+		"description": "Container para a página ou outra região da mesma"
+	  },
+
+	  "Parágrafo customizado": {
+			"prefix": "paragrafo_rfs",
+			"body": [
+				"p {",
+				"   text-align: justify;",
+				"   padding: 5%;",
+				"   column-count: 2;",
+				"   column-gap: 30px;",
+				"}",
+				""
+			],
+			"description": "Parágrafo customizado"
+			},
+
+	  "h1 customizado": {
+			"prefix": "h1_rfs",
+			"body": [
+				"h1 {",
+				"   font-family: Georgia, \"Times New Roman\", Times, serif;",
+				"   font-size: 28px;",
+				"   font-weight: bold;",
+				"   color: ${1:#0000FF};",
+				"   background-color: ${2:#c6d3d3};",
+				"   /* center the element */",
+				"   right: 0;",
+				"   left: 0;",
+				"   margin-right: auto;",
+				"   margin-left: auto;",
+				"   /* give it dimensions */",
+				"   width: ${3:40%};   ",
+				"}"
+			],
+			"description": "h1 customizado"
+		},
+
+	  "h2 customizado": {
+			"prefix": "h2_rfs",
+			"body": [
+				"h2 {",
+				"   font-family: Georgia, \"Times New Roman\", Times, serif;",
+				"   font-size: 18px;",
+				"   font-weight: bold;",
+				"   color: ${1:#0000FF};",
+				"   background-color: ${2:#c6d3d3};",				
+				"   /* center the element */",
+				"   right: 0;",
+				"   left: 0;",
+				"   margin-right: auto;",
+				"   margin-left: auto;",
+				"   /* give it dimensions */",
+				"   width: ${3:40%};   ",
+				"}"
+			],
+			"description": "h2 customizado"
+		},
+
+	  "Texto Centralizado": {
+		"prefix": "text-center_rfs",
+		"body": [
+		  "/* Classe a ser usada para centralizar texto */",
+		  ".text-center {",
+		  "  text-align: center;",
+		  "}",
+		  ""
+		],
+		"description": "Texto Centralizado"
+	  },
+
+	"Tabela Estilizada": {
+		"prefix": "table_css_rfs",
+		"body": [
+			"/* Tabela elegante */",
+			"/* <h2>${1:Tabela de Teste}</h2> */",
+			"table {",
+			"  font-family: \"Trebuchet MS\", Arial, Helvetica, sans-serif;",
+			"  border-collapse: collapse;",
+			"  width: 40%;",
+			"}",
+			"",
+			"table td, table th {",
+			"  border: 1px solid #ddd;",
+			"  padding: 8px;",
+			"}",
+			"",
+			"table tr:nth-child(even){background-color: #f2f2f2;}",
+			"",
+			"table tr:hover {background-color: #ddd;}",
+			"",
+			"table th {",
+			"  padding-top: 12px;",
+			"  padding-bottom: 12px;",
+			"  text-align: left;",
+			"  background-color: #4CAF50;",
+			"  color: white;",
+			"}"
+		],
+		"description": "Tabela Estilizada"
+	},
+
+	"Menu Horizontal em CSS": {
+		"prefix": "menu_horizontal_rfs",
+		"body": [
+		  "/* Código HTML do menu */",
+		  "/*",
+		  "    <nav class=\"menu\">",
+		  "        <br>",
+		  "        <ul>",
+		  "          <li><a href=\"${1:index.html}\"> ${2:Início}</a></li>",
+		  "          <li><a href=\"${3:tutoriais.html}\"> ${4:Tutoriais}</a></li>",
+		  "          <li><a href=\"${5:dicas.html}\"> ${6:Dicas}</a></li>",
+		  "          <li><a href=\"${7:sobre.html}\"> ${8:Sobre mim}</a></li>",
+		  "        </ul>",
+		  "    </nav>",
+		  "*/",
+		  "/* Código CSS do menu */",
+		  ".menu ul {",
+		  "  list-style-type: none;",
+		  "  margin: 0;",
+		  "  padding: 0;",
+		  "  text-align: center;",
+		  "}",
+		  "",
+		  "a {",
+		  "  text-decoration: none;",
+		  "}",
+		  "",
+		  ".menu li {",
+		  "  padding: 8px;",
+		  "  margin-bottom: 8px;",
+		  "  display: inline;",
+		  "  background-color: #33b5e5;",
+		  "  color: #ffffff;",
+		  "}",
+		  "",
+		  ".menu li:hover {",
+		  "  background-color: #0099cc;",
+		  "}"
+		],
+		"description": "Menu Horizontal em CSS"
+	  },
+
+	  "Centralizar Imagem na Horizontal": {
+		"prefix": "image_center_rfs",
+		"body": [
+			"/*Centralizando imagem na horizontal*/",
+			"/* <h2>Açude do Castanhão Sangrando</h2>*/",
+			"/* E: <img src=\"images/imagem.png\"> */",
+		  "img {",
+		  "  width: ${1:40%};",
+		  "  height: auto;  ",
+		  "  border: ${2:3px solid green};",
+		  "  padding: 10px;",
+		  "  display: block;",
+		  "  margin-left: auto;",
+		  "  margin-right: auto;  ",
+		  "}"
+		],
+		"description": "Centralizar Imagem na Horizontal"
+	  },
+
+	  "Rodapé Centralizado na Vertical com CSS": {
+		"prefix": "footer_vertical_center_rfs",
+		"body": [
+			"/* Rodapé centralizado na vertival*/",
+			"/* Usar com div no HTML, assim: <div>2019 - Ribamar FS</div>*/",
+		  "footer {    ",
+		  "    background-color: ${1:#0099CC};",
+		  "    color: ${2:#FFFFFF};",
+		  "    font-size: ${3:10px};",
+		  "    text-align: center;",
+		  "    height: 50px;",
+		  "    line-height: 50px;",
+		  "    vertical-align: middle;",
+		  "}",
+		  ""
+		],
+		"description": "Rodapé Centralizado na Vertical com CSS"
+	  },
+
+	  "Ajuda Básica para CSS no VSCode": {
+		"prefix": "ajuda_css_rfs",
+		"body": [
+		  "/*Ajuda para CSS no Visual Studio Code",
+		  "",
+		  "Ao criar uma classe ou id, comece digitando - (hífen) no início do nome da propriedade",
+		  "para receber uma lista das propriedades para moz, ms, o e webkit",
+		  "",
+		  "Exemplo:",
+		  "",
+		  ".teste {",
+		  "    -",
+		  "}",
+		  "",
+		  "Diversas propriedades que o Emmet autocompleta dentro de um seletor",
+		 "Precisa digitar cada comando/atalho dentro de um seletor e teclar enter */",
+		 ".classe{",
+			"    bg",
+			"}",
+			"/*Você precisa digitar \"bg\" acima e teclar enter*/",
+		  "",
+		  "h1 {",
+		  "    pos:a",
+		  "",
+		  "    t:a",
+		  "    b:a",
+		  "",
+		  "    fl:l",
+		  "    cl:b",
+		  "",
+		  "    bg",
+		  "    bgc",
+		  "    bgi",
+		  "    bgr:x",
+		  "    bga:f",
+		  "",
+		  "    c",
+		  "",
+		  "    f",
+		  "    fz",
+		  "    fw",
+		  "    fw:b",
+		  "    fs:i",
+		  "",
+		  "    bd",
+		  "    bdc",
+		  "    bdi",
+		  "",
+		  "    !",
+		  "}",
+		  "",
+		  "/*Muito mais em:",
+		  "https://docs.emmet.io/cheat-sheet/*/",
+		  ""
+		],
+		"description": "Ajuda Básica para CSS no VSCode"
+	  }
+}

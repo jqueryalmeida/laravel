@@ -1,0 +1,4 @@
+ "Print to console": {
+	 	"scope": "php,html",		
+	 	"prefix": "alert",
+	 	"body": [

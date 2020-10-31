@@ -1,0 +1,42 @@
+Auto-crud
+
+Criador Automático de CRUDs com PDO
+
+GitHub
+https://github.com/auto-crud/auto-crud
+
+Packagist
+https://packagist.org/packages/auto-crud/auto-crud
+
+Recursos ativos:
+
+
+Discussões importantes:
+
+- Ter uma versão bem localizada, de forma que nomes de arquivos, tabelas, campos, variáveis sejam em português ou manter o padrão com tudo isso em inglês e apenas strings e textos em português?
+
+
+Atualizando via VScode com git
+
+Depois de uma grande atualização do projeto auto-crud localmente agora quero enviar para o GitHub sobrescrevendo o que existe lá
+No meu desktop o projeto está em /var/www/html/auto-crud
+
+- Abrir VSCode
+- Teclar Ctrl+Shift+` para abrir Terminal
+- cd projetos (este é o diretório que criei para atualizar projetos no meu /home/ribafs)
+- Executar
+  git clone https://github.com/auto-crud/auto-crud.git
+  cd auto-crud
+- Abrir o diretório /home/ribafs/proejtos/auto-crud no VSCode
+- Através do gerenciador de arquivos removo tudo que existe em /home/ribafs/proejtos/auto-crud e copio tudo que está em /var/www/html/auto-crud para lá
+- De volta ao VSCode clico no ícone do Git/Source Control
+- Clico no ícone do tick acima de Commit
+- Confirmo clicando em Sim
+- Digito uma mensagem para o commit "Segundo commit - melhorando funções"
+- Clico nos 3 pontinhos acima e em Push
+- Entro com o login e a senha e aguardo o envio dos arquivos para o GitHub
+- Quando a barrinha azul acima parar de se mover para a direita e esquerda vou ao site do repositório e teclo F5 para atualizar
+- Agora vou atualizar o README.md para que reflita as alterações
+- E criar um novo release acusando as alterações e para manter uma nova versão.
+
+

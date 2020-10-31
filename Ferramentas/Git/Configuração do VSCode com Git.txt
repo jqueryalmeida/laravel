@@ -1,0 +1,51 @@
+Configuração do VSCode com Git
+https://www.youtube.com/watch?v=QJWP4z3FHhM
+
+Instalar git na máquina
+sudo apt-get install git
+ou https://git-scm.com/
+
+Criar repositório "testando" no GitHub ou GitLab
+Com apenas o readme e a licença para clonar ele no VSCode e adicionar todos os arquivos desejados para então efetuar o commit para o servidor.
+
+Abra o VSCode
+
+Crie uma nova pasta vazia chamada "projetos" e abrir esta pasta no VSCode para clonar o repositório dentro dela
+
+Abrir o terminal interativo - View - Integrated Terminal ou Ctrl+Shift+'
+
+Clonar o repositório criado antes com:
+git clone https://github.com/ribafs/testando.git
+Então teremos a pasta testando na pasta projetos
+
+Efetuar alterações
+Criar ou copiar arquivos para a pasta testando
+
+Efetuar commit
+
+Clicar no ícone do Source Control
+
+Publicar - clicar nos 3 pontinhos - Publish Branch
+Entrar com login e senha, casos eja solicitados. Serão solicitados caso não tenha configurado o git localmente.
+
+Enviar as alterações efetuadas para o repositório
+Clicar no ícone do Source Control
+Clicar nos 3 pontinhos - Push
+
+Ver versões dos arquivos alterados
+Instalar extensão Git History clicando no ícone Extensions à esquerda ou Ctrl+Shift+X
+Digit "git" e clique em install em Git History
+
+Selecionar um arquivo
+Teclar Ctrl+Shift+P - git log e Enter
+Current Branch
+
+Mostrará as alterações e mensagens de commit
+
+Mais sobre o VSCode
+https://www.youtube.com/watch?v=119e0lgol0s
+
+
+Instalando GitLab localmente
+https://about.gitlab.com/installation/#ubuntu
+

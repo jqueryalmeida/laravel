@@ -1,0 +1,119 @@
+Existem dois tipos de middleware
+
+    1. Global middleware 
+    2. Route based middleware
+
+Para registrar um middleware como global devemos registrar em
+app\Http\Kernel.php
+
+Para usar um middleware em rota
+    1. Middleware on single Route 
+
+Route::get('admin/dashboard', 'AdminController@index')->middleware('admin');
+
+    2. Middleware on a group of Routes 
+
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('admin/dashboard', 'AdminController@index');
+    Route::get('admin/profile', 'AdminController@profile');
+});
+
+https://desertebs.com/laravel/how-to-use-laravel-middleware-with-example
+
+
+ public function handle($request, Closure $next)
+    {
+      if(auth()->user()->isAdmin == 1){
+        return $next($request);
+      }
+        return redirect('home')->with('error','You have not admin access');
+    }
+
+class HomeController extends Controller
+{
+    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
+    }
+
+    public function admin()
+    {
+        return view('admin');
+    }
+
+}
+
+admin.blade.php
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ADMIN PAGE</title>
+  </head>
+  <body>
+    WELCOME TO ADMIN ROUTE
+  </body>
+</html>
+
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('admin/routes', 'HomeController@admin');
+});
+
+Route::get('admin/routes', 'HomeController@admin')->middleware(['admin','auth']);
+
+https://appdividend.com/2017/07/18/laravel-5-middleware-tutorial/ 
+
+Running middleware on every request
+So, let's start by running our middleware on every request. Simple add it to $middleware no Kernel.php
+
+Running middleware on specific routes
+OK, now let's move our custom middleware to the optional stack, with a key:
+    protected $routeMiddleware
+
+$this->middleware()
+Or, you can use the $this->middleware() method on any controller (or its methods) if the controller extends the base controller:
+...
+use Illuminate\Routing\Controller;
+
+class AwesomeController extends Controller {
+
+    public function __construct()
+    {
+        $this->middleware('csrf');
+        $this->middleware('auth', ['only' => 'update'])
+    }
+
+}
+
+How do I implement before vs. after filters in middleware?
+
+class BeforeMiddleware implements Middleware {
+
+    public function handle($request, Closure $next)
+    {
+        // Do Stuff
+        return $next($request);
+    }
+
+}
+
+class AfterMiddleware implements Middleware {
+
+    public function handle($request, Closure $next)
+    {
+        $response = $next($request);
+        // Do stuff
+        return $response;
+    }
+
+}
+
+
+

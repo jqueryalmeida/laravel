@@ -1,0 +1,76 @@
+Criação de site usando VSCode com Snippets do CSS e do HTML e com abreviações do Emmet
+
+Copiar os dois snippets: css.json e html.json para a pasta:
+
+Windows
+C:\Users\TeuNome\AppData\Roaming\Code\User\snippets
+
+Linux
+/home/TeuNome/.config/Code/User/snippets
+
+
+- Criar uma pasta para o projeto no sistema operacional, chamada projeto
+- Criar no raiz de projeto os arquivos:
+    - index.html
+    - style.css
+- Criar a subpasta projeto/images
+- Copiar a imagem bg.png, castanhao.jpg e a favicon.ico para a pasta projeto/images
+
+Clicar em style.css e adicionar os prefixos do snippet css.json:
+
+- reset_rfs
+- body_rfs
+- container_rfs
+- h1_rfs
+- h2_rfs
+- paragrafo_rfs
+- text_center_rfs
+- table_css_rfs
+- menu_horizontal_rfs
+- image_center_rfs
+- footer_vertical_center_rfs
+
+Clicar em index.html e insetir os prefixos do snippet html.json e algumas abreviações:
+
+!
+link:css
+link:favicon
+
+main class="container"
+
+    header h1 Título Principal da Página
+
+    nav class="menu"
+        h2 Título do Menu
+        menu
+
+    section
+        h2 Texto da Página
+        p colar um parágrafo do https://br.lipsum.com/
+
+    section
+        h2 Título da Tabela
+        table_html_rfs
+
+    section
+        h2 Título do Form
+        form_custom_rfs
+Obs.: usar uma div abarcando a tabela e o form com align="center"
+    
+    section
+        h2 Título da imagem
+        img
+
+    footer
+        div 2019 - Ribamar FS
+
+    /main
+
+Inserir algumas tags br entre as seções para espaçar as seções do site.
+
+Visualizar no navegador com a extensão "vsc view in browser":
+
+Ctrl+Shift+P
+View in Browser
+
+

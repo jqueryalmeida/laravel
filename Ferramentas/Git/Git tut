@@ -1,0 +1,28 @@
+Git tut
+
+Entrar na pasta do pojeto
+cd projeto
+
+Inicializar o repositório git
+git init
+
+Adicionar todos os arquivos da pasta
+git add --all
+
+Realizar o commit com uma mensagem especificando a alteração
+git commit -m "First commit"
+
+Para cada alteração efetuamos um commit
+
+Verificar mudanças desatualizadas
+git status
+
+Em caso de ter tido mudanças executar
+
+git add --all
+git commit -m "Alteração feita"
+
+Verificar operações feitas pelo git
+git log
+
+

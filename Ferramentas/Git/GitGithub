@@ -1,0 +1,38 @@
+cd /projeto
+git config --global user.name "ribafs"
+git config --global user.email "ribafs@gmail.com"
+git init
+git remote add origin git@github.com:ribafs/magic-fw.git
+git add .
+git commit -m "initial commit"
+git push origin master --force
+
+Remover
+rm -rf .git
+
+git status
+
+git rebase --continue
+
+git pull --rebase origin master
+git push origin master
+
+Checar
+git config --global --list
+
+Ir para a master branch
+git checkout master
+
+Visualizar repositório remoto
+git remote -v
+
+
+Creating a new repository on the command line
+git config --global user.name "ribafs"
+git config --global user.email "ribafs@gmail.com"
+touch README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin http://github.com/ribafs/magic-fw.git
+git push -u origin master

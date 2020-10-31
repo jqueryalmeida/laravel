@@ -1,0 +1,73 @@
+Vagrant
+
+Quando você começa a trabalhar com programação, é a principio normal que sua máquina fique um pouco bagunçada. Bibliotecas pra cá, interpretadores pra lá, compiladores ali, e assim vai. Depois de algum tempo, você até se encontra de forma que consegue usar tudo o que você mesmo colocou e dessa forma consegue fazer o que quer, ou seja, programar. O problema é quando você precisa efetivamente replicar este mesmo ambiente em outras máquinas, como a máquina dos seus colegas de trabalho,  por exemplo, ou quando você por algum motivo perde todos os dados da máquina (como quando o HD resolve pifar, o que costuma acontecer com certa frequência, pelo que vejo).
+O Vagrant é, em poucas palavras, uma ferramenta para criar e distribuir ambientes de desenvolvimento. Com esse propósito, sua real utilidade se mostra mais clara: Facilitar o trabalho do desenvolvedor no teste de suas aplicações, permitindo simular um ambiente mais fiel ao que será usado efetivamente em produção, além de permitir o compartilhamento deste ambiente com outros desenvolvedores. Tudo isso é feito com o uso de uma máquina virtual, que isola todo um hardware virtual a partir da sua máquina física real, além de permitir uso de sistema operacional e softwares próprios, por exemplo.
+Um programador PHP, por exemplo, pode configurar a máquina para instalar o PHP, Apache e MySQL da mesma forma que este o faria em um servidor real. E, ainda: usando o mesmo sistema operacional do servidor real. Mas...qual a diferença entre usar o Virtualbox diretamente e o Vagrant, nesse caso? Bom, usando o Vagrant, o desenvolvedor consegue facilmente fazer configurações como redirecionamento de portas (importante para um programador que trabalha com web), sincronizar pastas entre a sua máquina física real e a máquina virtual de desenvolvimento e provisionar a máquina virtual automaticamente de acordo com a sua vontade. Tudo isso usando apenas alguns poucos arquivos de configuração e sem precisar repetir procedimentos frequentemente. No fim, o Vagrant se destaca pela facilidade de distribuição e manutenção das máquinas virtuais, garantindo assim um ambiente de desenvolvimento eficiente e fácil de replicar.
+
+Dicas sobre o vagrant
+
+= Instalar o VirtualBox e o Extension Pack
+https://www.virtualbox.org/wiki/Downloads
+
+= Instalar o git
+Linux - sudo apt install git
+Windows - https://git-scm.com/download/win
+
+= Instalar o Vagrant
+http://vagrantup.com
+
+= Procurando por boxes na cloud:
+https://app.vagrantup.com/boxes/search
+
+= Crie uma pasta para as boxes
+mkdir /home/ribafs/vagrant
+
+= Criar uma pasta para a box cake-vagrant
+mkdir /home/ribafs/vagrant/cake-vagrant
+
+= Instalar a box cake-vagrant:
+cd /home/ribafs/vagrant
+mkdir cake-vagrant
+cd cake-vagrant
+vagrant init ribafs/cake-vagrant --box-version 1.0.0
+vagrant up
+
+vagrant status
+ssh -p 2222 vagrant@localhost 'sudo shutdown -h now'
+vagrant global-status
+vagrant destroy 5d24c9b
+
+= Levantar
+vagrant up --provider=virtualbox
+
+= Acessar a box instalada e upada
+vahrant ssh
+
+= Exportando uma box
+cd /vagrant/boxnaome
+vagrant box update
+vagrant halt
+vagrant package --output nome.box
+
+Para corrigir problemas
+
+= Instalar vghuest
+vagrant plugin install vagrant-vbguest
+
+cd /vagrant/boxname
+vagrant box update
+
+= Adicionando nova rede
+
+Editar o Vagrantfile e descomentar e ajustar a linha:
+  config.vm.network "private_network", ip: "192.168.10.10"
+
+Com isso podemos acessar a box do host com:
+
+http://192.168.10.10
+
+ssh vagrant@192.168.10.10
+
+scp arquivo.zip vagrant@192.168.10.10:/tmp
+
+

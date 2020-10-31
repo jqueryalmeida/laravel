@@ -1,0 +1,12 @@
+Paulo Cardoso
+Criar Branch com base no código da branch que você está é
+"git checkout -b nomeDaBranch"
+Trocar de branch é
+"git checkout nomeDaBranch"
+Atualizando sua branch com código de master é
+"git pull origin master"
+Jogar sua branch com commits locais pra nuvem/remoto é
+"git push origin nomeDaBranch"
+Sugiro pesquisar sobre os comandos git: stash, stash pop, stash apply, merge, fetch, reset, clean.
+Esses comandos acima somados com o add, commit, pull, push e checkout eu praticamente só uso git em terminal, só uso IDE pra corrigir conflitos, porque conflitos sem uma parte visual boa é ruim de corrigir.
+

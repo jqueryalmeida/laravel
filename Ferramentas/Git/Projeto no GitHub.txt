@@ -1,0 +1,208 @@
+Tocar um Projeto Free e Open Source no GitHub
+
+- Criação de um site/página para o projeto com
+	- Descrição
+	- Objetivos
+	- Recursos
+		- Issue/problema/erro - como criar um aviso de erro
+		- Pull Requests (PR)/fazer pedido - como solicitar novas características
+		Quando seu trabalho tiver na sua fork, você precisa notificar o mantenedor. Isso é geralmente chamado pull request (requisição para ele puxar), e 			você pode gerar isso pelo website — GitHub tem um "pull request" que notifica automaticamente o mantenedor
+		- Fork - como criar uma cópia sua
+		Fork - Ao fazer um Fork(Garfo em português), você estará pegando uma versão do projeto pra você e assim poderá fazer contribuir para o projeto e 			fazer o Pull Request para o mantenedor do projeto.
+		- Projects - como criar (Para listar características TO DO, Em progresso e Finalizado)
+		- Wiki - como usar a wiki do repositório
+		- Colaboradores do repositório
+		- Tráfico - visualizando alguns gráficos
+		- Commits - Finalizar alterações para enviar ao servidor
+		- Insights - visualizando estatísticas do repositório
+		- Add Topics/assuntos que o repositório contempla
+		- Gist - https://gist.github.com/ - compartilhamento de thechos de código e de dicas
+        - Compare - comparando versões (botão abaixo de Clone or Download)
+	- Equipe de Colaboradores
+
+	- Código de Conduta
+	- Guia de Contrubuição
+	- Licença
+	- Guia de uso do projeteo no GitHub
+		- Criação de conta
+		- Criação de repositório
+			- README em markdown
+			- Licença
+			- Enviar conteúdo pelo VSCode
+		- Configurações
+		- Usando construtores de sites para criar o site do repositório:
+		https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages
+		https://help.github.com/articles/using-a-static-site-generator-other-than-jekyll/
+		- Tipos de páginas para usuários, organizações e projetos
+		https://help.github.com/articles/user-organization-and-project-pages/
+		- Usando o próprio domínio no repositório
+		https://help.github.com/articles/using-a-custom-domain-with-github-pages/
+		- Criando uma página de erro 404:
+		https://help.github.com/articles/creating-a-custom-404-page-for-your-github-pages-site/
+		- Ativando SSL/HTTPS
+		https://help.github.com/articles/securing-your-github-pages-site-with-https/
+		- Outras customizações
+		https://help.github.com/articles/additional-customizations-for-github-pages/
+		- Onde obter ajuda sobre criação de projetos no GitHub
+		https://github.com/frontendbr/open-source
+		- Criar novo branch gh-pages
+        - Criar conta no Packagist para usar com composer
+
+GIT
+
+git help bomando
+
+Conectando
+
+Clonar branch
+
+cd projeto
+
+git clone -b gh-pages https://github.com/auto-crud/auto-crud.git
+
+Passando user.name
+git config --global user.name "Ribamar FS"
+
+Acessar branch via url:
+https://github.com/ribafs/auto-crud/tree/gh-pages
+
+Alternar para outra bracn
+git checkout -b nomebranch
+
+Revertendo uma ação
+
+Se fizer
+git add .   Adicionar todos os arquivos e diretórios da pasta atual no projeto a ser enviado
+
+Revertendo
+
+git reset HEAD .
+
+Status - mostrar arquivos alterados
+
+git status
+
+Adicionar somente um arquivo
+
+git add arquivo.txt
+
+Comitando
+
+git commit -m 'Enviei o arquivo arquivo.txt'
+
+Enviar outro arquivo
+
+git add arquivo2.txt
+
+git commit -m 'Enviei o arquivo arquivo2.txt'
+
+Enviando para o servidor
+
+git push origin nomeBranch
+
+
+
+git clone ribafs@github.com:auto-crud.git -b gh-pages auto-crud
+
+Listando branch:
+git branch
+
+Excluindo branch
+git branch --delete nome		
+
+Criando branch
+git branch gh-pages
+
+git push origin gh-pages
+login
+senha
+Envia tudo para o GH
+
+Criar novo Branch via site:
+
+Abrir um repositório
+Clicar na combo Branch: master
+Digitar o nome do novo branch e teclar Enter
+
+Remover branch pelo site
+
+Abrir o repositório
+Clicar em branchs e deletar o desejado
+
+Criar pasta pelo site
+
+Abrir o repositório
+Supondo que deseja criar a pasta scripts
+Clicar no botão Create new file
+Digitar na caixa Name your file
+scripts/apagar.txt
+Commit new file abaixo
+
+Detalhe: o github não aceita pastas sem arquivos. Se a pasta tem somente um arquivo e o excluímos a pasta também será excluída.
+
+
+
+- Como contribuir para este projeto
+
+
+Nome do projeto (mudar?)
+
+Settings
+
+Sobre Projetos Open Source
+
+Um bom projeto open-source, no meu ponto de vista, precisa de:
+
+    Documentação (readme e website)
+    Website (pode ser no gh-pages mesmo)
+    Versionamento (tags do git e changelog)
+    Testes (no caso de projeto em JS)
+    TO DO (mesmo que o projeto esteja parado, é bom um TODO para saber o que precisa ser feito)
+
+Enfim, tem várias coisas, mas essas são algumas delas.
+
+Sabemos que é dificil tocar um projeto open-source sozinho... e sempre tive essa dúvida em relação a galera.
+
+Eu por exemplo, não faço freelas... me dedico ao open-source e aos eventos que toco com a comunidade.... e sempre quis conhecer pessoas com tempo e que se interessem em tocar projetos open-source.
+
+Sempre bom ter algum designer, alguém que fique com a documentação, website de apresentação do projeto... enfim...
+
+A pergunta é: Quem se interessa por projetos open-source e TEM TEMPO para colaborar? Eu estou disposto a ajudar em outros projetos que estejam parados de vocês... A ideia é formar um grupo de pessoas que realmente estejam interessados.
+
+OBS.: Quando falei COM TEMPO, não é se dedicar o dia inteiro (até porque eu também trabalho)... mas é que normalmente todo mundo responde no impulso "EU AJUDO", mas ai o cara fica o dia inteiro offline, diz que vai fazer e não faz...
+
+https://github.com/frontendbr/forum/issues/5
+
+Composer
+https://getcomposer.org/doc/01-basic-usage.md
+
+composer init --help
+
+Para baixar o último release do repositório via composer usar:
+composer require auto-crud/auto-crud:dev-master
+
+
+Problemas
+
+git config --global url."https://".insteadOf git://
+
+Listar minhas configurações
+git config --list
+
+Cliente Git
+
+https://www.gitkraken.com/
+https://www.syntevo.com/smartgit/
+
+Clone de Repositório pelo VSCode
+
+- Abrir VSCode
+- Abrir diretório base de projetos com Ctrol+O
+- Clicar no ícone Source Control/Git
+- Clicar em Initialize Repository acima
+- Abrir terminal com Ctrl+Shift+`
+- Executar para clonar o bransh gh-pages da página
+git clone -b gh-pages https://github.com/auto-crud/auto-crud.git
+
+- Efetuar as alterações desejadas
+

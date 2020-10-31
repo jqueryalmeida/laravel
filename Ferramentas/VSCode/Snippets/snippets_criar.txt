@@ -1,0 +1,16 @@
+Criar snippets para as diversas áreas usadas:
+
+HTML
+CSS
+
+JS
+Bootstrap
+jQuery
+PHP
+MySQL
+PostgreSQL
+PDO
+PHPOO
+Joomla
+Cake
+Mobile

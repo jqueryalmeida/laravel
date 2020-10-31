@@ -1,0 +1,82 @@
+Manage Environment Variables with Eco
+
+Eco CLI may be installed globally or on a per-project basis using Composer:
+
+$ composer require hotmeteor/eco-cli
+ 
+$ composer global require hotmeteor/eco-cli
+
+Once you have the initial setup completed, you could get a fresh .env (based on .env.example) using the following CLI command:
+
+eco env:fresh
+
+You can push/pull env from the remote .eco file using:
+
+# Pull a remote key/value pair from the remote .eco file
+eco env:pull
+
+# Push a key/value pair to the remote eco file
+eco env:push
+
+Getting Started
+
+Once Eco is installed it needs to be set up. Ideally, this is done within the folder for the project you are collaborating on.
+
+A Github Personal Access Token is required. It should be created with the repo and read:org permissions.
+
+$ eco init
+
+You will be asked to select the owner or organization to act under, as well as the repository for the current project.
+Usage
+
+Eco comes with a number of commands to manage local and remote environment variables.
+Setup
+
+$ eco init
+
+Should be the first thing you run after installing. As seen above, it requires a Github PAT.
+Organizations
+
+$ eco org:switch
+
+List available organizations you're a member of and allow you switch to a different one.
+
+$ eco org:current
+
+Show the current working organization.
+Repositories
+
+$ eco repo:list
+
+List available repositories in your organization.
+
+$ eco repo:switch
+
+List available repositories in your organization and allow you switch to a different repo. This allows you to use Eco across different repositories. Just don't forget to switch repos before pushing or pulling!
+
+$ eco repo:current
+
+Show the current working repository.
+Keys
+
+$ eco env:fresh
+
+Fetch the .env.example file from your project repository and copy it as your new local .env file. This is a desctructive command, so you are asked to confirm.
+
+$ eco env:set
+
+Create or update a key:value pair in your local vault and will add it to your local .env file.
+
+$ eco env:unset
+
+Remove a key:value pair from your local vault and will remove it from your local .env file.
+
+$ eco env:push
+
+Push a key:value pair into the remote .eco file.
+
+$ eco env:pull
+
+Fetch a key:value pair from the remote .eco file and add or update it in your local .env file.
+https://github.com/hotmeteor/eco-cli
+

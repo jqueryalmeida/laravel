@@ -1,0 +1,62 @@
+Five Useful Laravel Blade Directives
+https://laravel-news.com/five-useful-laravel-blade-directives 
+
+Checar se user está autenticado
+
+@if(auth()->user())
+    // The user is authenticated.
+@endif
+
+ou
+@auth
+    // The user is authenticated.
+@endauth
+
+Checar se user é guest (não autenticado)
+
+@if(auth()->guest())
+    // The user is not authenticated.
+@endif
+
+@guest
+    // The user is not authenticated.
+@endguest
+
+@guest
+    // The user is not authenticated.
+@else
+    // The user is authenticated.
+@endguest
+
+
+Incluir a primeira view se ela existir ou a segunda senão
+
+@if(view()->exists('first-view-name'))
+    @include('first-view-name')
+@else
+    @include('second-view-name')
+@endif
+
+ou
+@includeFirst(['first-view-name', 'second-view-name']);
+
+Incluir view baseado em uma condição
+
+@if($post->hasComments())
+    @include('posts.comments')
+@endif
+
+ou
+@includeWhen($post->hasComments(), 'posts.comments');
+
+Incluir view se existir
+
+@if(view()->exists('view-name'))
+    @include('view-name')
+@endif
+
+ou
+@includeIf('view-name')
+
+https://laravel.com/docs/8.x/blade#introduction
+

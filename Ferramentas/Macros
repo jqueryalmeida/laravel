@@ -1,0 +1,83 @@
+How to Create And Uses Laravel Macro Example
+https://www.tutsmake.com/create-and-uses-of-laravel-macro/
+
+Macro é um recurso poderoso do framework laravel. As macros permitem adicionar funcionalidades personalizadas aos componentes internos do Laravel, como response::macro, laravel macroable etc. Esta macro laravel também funciona com aplicativos laravel.
+
+Digamos que você esteja trabalhando com uma API e queira a resposta abaixo quando ocorrer sucesso
+
+{
+    "success": true,
+    "msg": "Your message",
+    "data": Array()
+}
+
+Para obter a resposta acima abra o arquivo AppServiceProvider.php e coloque o código abaixo
+
+Request::macro('success', function ($msg, $data) {
+    Request::json([
+    "success" => true,
+        "msg" => $msg,
+        "data" => $data
+    ]);
+});
+
+Use o método definido acima
+
+Request::success('Your message', Array());
+
+Exemplo2
+Criar um método a ser usado em caso de falha
+
+Abra o AppServiceProvider.php e adicione o código abbaixo:
+
+Request::macro('fail', function ($msg, $data) {
+    Request::json([
+        "success" => false,
+        "msg" => $msg,
+    ]);
+});
+
+Testando
+
+Request::fail('Your message');
+
+Irá retornar
+
+{
+        "success": false,
+        "msg": "Your message"
+}
+
+Que componentes são “Macroable” in laravel?
+
+As macros podem ser definidas em qualquer classe com o trait Macroable. Abaixo está uma lista de facades e classes Macroable:
+
+Facades
+    • Cache
+    • File
+    • Lang
+    • Request
+    • Response
+    • Route
+    • URL
+Illuminate Classes
+    • Illuminate\Routing\UrlGenerator
+    • Illuminate\Cache\Repository
+    • Illuminate\Validation\Rule
+    • Illuminate\Console\Scheduling\Event
+    • Illuminate\Database\Eloquent\Builder
+    • Illuminate\Database\Eloquent\Relation
+    • Illuminate\Database\Query\Builder
+    • Illuminate\Filesystem\Filesystem
+    • Illuminate\Foundation\Testing\TestResponse
+    • Illuminate\Http\RedirectResponse
+    • Illuminate\Http\Request
+    • Illuminate\Http\UploadedFile
+    • Illuminate\Routing\ResponseFactory
+    • Illuminate\Routing\Router
+    • Illuminate\Support\Str
+    • Illuminate\Support\Arr
+    • Illuminate\Translation\Translator
+    • Illuminate\Support\Collection
+
+
