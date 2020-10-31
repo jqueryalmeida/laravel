@@ -1,0 +1,12 @@
+ALC é composta principalmente de dois elementos: autenticação e autorização.
+
+No Laravel authentication é um componente que instalamos e está pronto, out of box.
+
+A autorização é mais complexa, com vários componentes e tem como principais elementos o Gate e o Policy.
+Através de gates se implementa roles e permissions.
+
+A autenticação filtra que entra/loga no aplicativo.
+
+Os que conseguiram entrar serão verificados pela autorização, que checa quem tem permissão para acesssar cada seção do aplicativo e quem não tem.
+
+

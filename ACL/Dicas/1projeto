@@ -1,0 +1,522 @@
+Criar ACL para Laravel 8
+
+Usando roles/groups. permissions, autenticação, middleware, provider, traits, migrations, seeders, controllers, routes
+
+users
+groups - slug, name
+permissions- slug, name
+
+php artisan make:migration create_clients_table --create=clients
+php artisan make:migration create_groups_table --create=groups
+php artisan make:migration create_permissions_table --create=permissions
+
+php artisan make:model Client
+php artisan make:model Group
+php artisan make:model Permission
+
+Tabelas pivô
+
+users-groups
+users-permissions
+groups-permissions
+
+php artisan make:migration create_users_groups_table --create=users_groups
+php artisan make:migration create_users_permissions_table --create=users_permissions
+php artisan make:migration create_groups_permissions_table --create=groups_permissions
+
+
+users - usar o default do laravel com: $table->string('email',191)->unique();
+groups
+            $table->string('name'); // Super
+            $table->string('slug'); // super
+permissions
+            $table->string('name'); // Clients edit
+            $table->string('slug'); // clients-edit
+
+        Schema::create('groups', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('slug');
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('slug');
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        Schema::create('users_groups', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('group_id');
+
+            //FOREIGN KEY CONSTRAINTS
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+ 
+            //SETTING THE PRIMARY KEYS
+            $table->primary(['user_id','group_id']);
+        });
+
+        Schema::create('users_permissions', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('permission_id');
+
+            //FOREIGN KEY CONSTRAINTS
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+ 
+            //SETTING THE PRIMARY KEYS
+            $table->primary(['user_id','permission_id']);
+        });
+
+        Schema::create('groups_permissions', function (Blueprint $table) {
+            $table->unsignedInteger('group_id');
+            $table->unsignedInteger('permission_id');
+
+            //FOREIGN KEY CONSTRAINTS
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
+ 
+            //SETTING THE PRIMARY KEYS
+            $table->primary(['group_id','permission_id']);
+        });
+
+Relacionamento entre tabelas/models
+
+App/Models/Group.php
+public function permissions() {
+   return $this->belongsToMany(Permission::class,'groups_permissions');       
+}
+
+public function users() {
+   return $this->belongsToMany(User::class,'users_groups');       
+}
+ 
+App/Models/Permission.php
+public function groups() {
+   return $this->belongsToMany(Group::class,'groups_permissions');       
+}
+
+public function users() {
+   return $this->belongsToMany(User::class,'users_permissions');       
+}
+
+Criar seeders
+
+php artisan make:seeder UsersSeeder
+php artisan make:seeder ClientsSeeder
+php artisan make:seeder GroupsSeeder
+
+Criar vários tipos de usuários (grupos) com diferentes permissões
+
+Grupos
+Por padrão, mas pode ser alterado esse esquema
+super - pode tudo em todo o aplicativo
+admin - pode tudo mas somente em users
+manager - pode tudo mas somente em clients e em todas as tabelas de negócio a serem adicionadas: products, etc
+user - pode somente ver a index de clients
+
+Permissions
+users-index
+users-create
+users-edit
+users-delete
+users-show
+
+groupsindex
+groupscreate
+groupsedit
+groupsdelete
+groupsshow
+
+permissions-index
+permissions-create
+permissions-edit
+permissions-delete
+permissions-show
+
+clients-index
+clients-create
+clients-edit
+clients-delete
+clients-show
+
+Criar migrations e seeders para
+users: super user, admin user, manager user e user common
+groups: super, admin, manager e user
+permissions: conceder de acordo com o esquema acima:
+    super: tudo de users e tudo de clients (idealmente tendo métodos que façam isso: conceder todas as permissões para uma tabela e total)
+    admin: tudo sobre users, groups e permissions
+    manager: tudo sobre clients
+    user: clients-index
+
+Com métodos para:
+adicionar users para grupo
+conceder permissoes para grupo
+conceder oermissions para user
+conceder todas as permissões sobre uma tabela
+conceder todas as permissões sobre todas as tabelas
+Checar se user tem certa permissão
+Checar se user pertence a certo grupo
+
+Com CRUDs para
+users
+clients
+groups
+permissions
+
+Para isso usar
+Traits
+Middlewares
+Tags do blade
+etc
+
+Criar rotas
+    users
+    clients
+    groups
+    eprmissions
+Criar views
+    users
+    clients
+    groups
+    eprmissions
+Criar controllers
+    users
+    clients
+    groups
+    eprmissions
+Criar ...
+
+Testar
+
+php artisan teste
+localhost:8000/clients
+
+Criar trait
+
+app/Permissions/HasPermissionsTrait.php
+
+Add para app/Models/User.php
+
+use App\Permissions\HasPermissionsTrait;
+
+class User extends Authenticatable
+{
+    use HasPermissionsTrait; //Import The Trait
+
+Edite App/Permissions/HasPermissionsTrait.php e cole isso:
+
+<?php
+namespace App\Permissions;
+
+use App\Permission;
+use App\Role;
+
+trait HasPermissionsTrait {
+
+   public function givePermissionsTo(... $permissions) {
+
+    $permissions = $this->getAllPermissions($permissions);
+    dd($permissions);
+    if($permissions === null) {
+      return $this;
+    }
+    $this->permissions()->saveMany($permissions);
+    return $this;
+  }
+
+  public function withdrawPermissionsTo( ... $permissions ) {
+
+    $permissions = $this->getAllPermissions($permissions);
+    $this->permissions()->detach($permissions);
+    return $this;
+
+  }
+
+  public function refreshPermissions( ... $permissions ) {
+
+    $this->permissions()->detach();
+    return $this->givePermissionsTo($permissions);
+  }
+
+  public function hasPermissionTo($permission) {
+
+    return $this->hasPermissionThroughGroup($permission) || $this->hasPermission($permission);
+  }
+
+  public function hasPermissionThroughGroup($permission) {
+
+    foreach ($permission->roles as $role){
+      if($this->roles->contains($role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public function hasGroup( ... $roles ) {
+
+    foreach ($roles as $role) {
+      if ($this->roles->contains('slug', $role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public function groups() {
+
+    return $this->belongsToMany(Group::class,'users_groups');
+
+  }
+  public function permissions() {
+
+    return $this->belongsToMany(Permission::class,'users_permissions');
+
+  }
+  protected function hasPermission($permission) {
+
+    return (bool) $this->permissions->where('slug', $permission->slug)->count();
+  }
+
+  protected function getAllPermissions(array $permissions) {
+
+    return Permission::whereIn('slug',$permissions)->get();
+    
+  }
+
+}
+
+Checar
+$user = $request->user(); //getting the current logged in user
+dd($user->hasGroup('admin','editor')); // and so on
+
+Vamos usar a diretiva "can" para checar se user tem permissão ao invés de usar $user->hasPermissionTo(), usaremoms $user->can() para fazer isso. Para isso criaremos o PermissionsServiceProvider
+
+php artisan make:provider PermissionsServiceProvider
+
+<?php
+namespace App\Providers;
+
+use App\Permission;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
+
+class PermissionsServiceProvider extends ServiceProvider
+{
+   
+    public function register()
+    {
+        //
+    }
+
+    public function boot()
+    {
+        try {
+            Permission::get()->map(function ($permission) {
+                Gate::define($permission->slug, function ($user) use ($permission) {
+                    return $user->hasPermissionTo($permission);
+                });
+            });
+        } catch (\Exception $e) {
+            report($e);
+            return false;
+        }
+
+        //Blade directives
+        Blade::directive('group', function ($group) {
+             return "if(auth()->check() && auth()->user()->hasGroup({$group})) :"; //return this if statement inside php tag
+        });
+
+        Blade::directive('endgroup', function ($group) {
+             return "endif;"; //return this endif statement inside php tag
+        });
+
+    }
+}
+
+Registrar
+
+config\app.php
+ 'providers' => [
+
+        App\Providers\PermissionsServiceProvider::class,
+    
+ ],
+
+Testar
+dd($user->can('clients-create'));
+
+Criar a rota em web.php
+Route::resource('/groups', HomeController::class);
+
+
+Controller permissions
+
+php artisan make:controller PermissionController
+
+<?php
+namespace App\Http\Controllers;
+
+use App\Models\Permission;
+use App\Models\Group;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class PermissionController extends Controller
+{   
+
+    public function Permission()
+    {   
+                $super_permission = Permission::where('slug','all-all')->first();
+                $admin_permission = Permission::where('slug', 'users-all')->first();
+                $manager_permission = Permission::where('slug', 'clients-all')->first();
+                $user_permission = Permission::where('slug', 'clients-index')->first();
+
+                $super_group = new Group();
+                $super_group->slug = 'super';
+                $super_group->name = 'Super user';
+                $super_group->save();
+                $super_group->permissions()->attach($super_permission);
+
+                $admin_group = new Group();
+                $admin_group->slug = 'admin';
+                $admin_group->name = 'Admin user';
+                $admin_group->save();
+                $admin_group->permissions()->attach($admin_permission);
+
+                $manager_group = new Group();
+                $manager_group->slug = 'manager';
+                $manager_group->name = 'Manager user';
+                $manager_group->save();
+                $manager_group->permissions()->attach($manager_permission);
+
+                $user_group = new Group();
+                $user_group->slug = 'user';
+                $user_group->name = 'User common';
+                $user_group->save();
+                $user_group->permissions()->attach($user_permission);
+
+                $super_group = Group::where('slug','super')->first();
+                $admin_group = Group::where('slug', 'admin')->first();
+                $manager_group = Group::where('slug', 'manager')->first();
+                $user_group = Group::where('slug', 'user')->first();
+
+                $createUsers = new Permission();
+                $createUsers->slug = 'users-create';
+                $createUsers->name = 'Create Users';
+                $createUsers->save();
+                $createUsers->groups()->attach($super_group);
+
+                $createClients = new Permission();
+                $createClients->slug = 'clients-create';
+                $createClients->name = 'Create Clients';
+                $createClients->save();
+                $createClients->groups()->attach($manager_group);
+
+                $editUsers = new Permission();
+                $editUsers->slug = 'edit-users';
+                $editUsers->name = 'Edit Users';
+                $editUsers->save();
+                $editUsers->groups()->attach($admin_group);
+
+                $super = new User();
+                $super->name = 'Ribamar FS';
+                $super->email = 'ribafs@gmail.com';
+                $super->password = bcrypt('123456');
+                $super->save();
+                $super->groups()->attach($super_group);
+                $super->permissions()->attach($super_permission);
+
+                $admin = new User();
+                $admin->name = 'Tiago EF';
+                $admin->email = 'tiago@gmail.com';
+                $admin->password = bcrypt('123456');
+                $admin->save();
+                $admin->groups()->attach($admin_group);
+                $admin->permissions()->attach($admin_permission);
+
+                $manager = new User();
+                $manager->name = 'Elias EF';
+                $manager->email = 'elias@gmail.com';
+                $manager->password = bcrypt('123456');
+                $manager->save();
+                $manager->groups()->attach($manager_group);
+                $manager->permissions()->attach($manager_permission);
+
+                $user = new User();
+                $user->name = 'Fátima EF';
+                $user->email = 'fatima@gmail.com';
+                $user->password = bcrypt('123456');
+                $user->save();
+                $user->groups()->attach($user_group);
+                $user->permissions()->attach($user_permission);
+                
+                return redirect()->back();
+    }
+}
+
+Testando
+
+php artisan serve
+localhost:8000/roles
+
+Testar no controller ou com tinker?
+$user = $request->user();
+dd($user->hasRole('super')); //will return true, if user has role
+dd($user->givePermissionsTo('clients-create'));// will return permission, if not null
+dd($user->can('clients-edit')); // will return true, if user has permission
+
+Na view dashboard
+@group('super')
+
+ Hello Super user
+
+@endgroup
+
+Somente o usuário super pode ver a frase.
+
+
+
+Criar
+php artisan make:controller HomeController
+
+Agora podemos usar o controller assim
+
+public function __construct()
+{
+   $this->middleware('auth'); 
+}
+
+
+public function store(Request $request)
+{
+    if ($request->user()->can('clients-create')) {
+        print 'OK';
+    }
+}
+
+public function destroy(Request $request, $id)
+{   
+    if ($request->user()->can('clients-delete')) {
+        print 'OK';
+    }
+
+}
+
+Testar
+
+php artisan migrate
+php artisan db:seed
+
+php artisan serve
+localhost:8000/groups
+
+http://www.rscoder.com/2020/05/laravel-7x-user-roles-and-permissions.html
+https://medium.com/@16shuklarahul/laravel-7-x-9ed4d41d327c
+https://www.codechief.org/article/user-roles-and-permissions-tutorial-in-laravel-without-packages
+

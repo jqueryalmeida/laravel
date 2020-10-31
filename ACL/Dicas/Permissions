@@ -1,0 +1,14 @@
+- permissions - para users
+create-user, 
+edit-user, 
+list-user, 
+create-role, 
+edit-role, 
+list-role,
+create-permission,
+edit-permission,
+list-permission,
+create-cliente,
+edit-cliente,
+list-cliente,
+

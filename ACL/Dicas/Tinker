@@ -1,0 +1,10 @@
+Adicionar um usuário
+
+php artisan tinker
+
+use App\User;
+User::create(['name'=>'Admin', 'email'=>'admin@gmail.com', 'password' => bcrypt(123456)]);
+User::create(['name'=>'Author', 'email'=>'author@gmail.com', 'password' => bcrypt(123456)]);
+User::create(['name'=>'Editor', 'email'=>'editor@gmail.com', 'password' => bcrypt(123456)]);
+
+

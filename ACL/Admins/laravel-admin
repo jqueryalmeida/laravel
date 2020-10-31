@@ -1,0 +1,16 @@
+Após instalar
+
+Configurar as permissões do aplicativo
+
+Editar o config/filesystems.php e adicionar ao início o array admin
+
+    'disks' => [
+
+        'local' => [
+            'driver' => 'local',
+            'root' => storage_path('app'),
+        ],
+
+        'admin' => [ 'driver' => 'local', 'root' => storage_path('app'), ],
+
+

@@ -1,0 +1,51 @@
+
+
+In laravel 5.6 it's very easy.
+
+class FooCommand,
+
+<?php
+
+namespace Vendor\Package\Commands;
+
+use Illuminate\Console\Command;
+
+class FooCommand extends Command {
+
+    protected $signature = 'foo:method';
+
+    protected $description = 'Command description';
+
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function handle() {
+        echo 'foo';
+    }
+
+}
+
+this is the serviceprovider of package. (Just need to add $this->commands() part to boot function).
+
+<?php
+namespace Vendor\Package;
+
+use Illuminate\Events\Dispatcher;
+use Illuminate\Support\ServiceProvider;
+
+class MyServiceProvider extends ServiceProvider {
+
+    public function boot(\Illuminate\Routing\Router $router) {
+        $this->commands([
+            \Vendor\Package\Commands\FooCommand ::class,
+        ]);
+    }
+}
+
+Now we can call the command like this
+
+    php artisan foo:method
+
+This will echo 'foo' from command handle method. The important part is giving correct namespace of command file inside boot function of package service provider.
+

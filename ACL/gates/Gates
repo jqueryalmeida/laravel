@@ -1,0 +1,191 @@
+Sobre Gates no Laravel
+
+Here, we define multiple gates as per our role base requirement. I’m creating three types of gates such as isAdmin, isEditor, and isGuest.
+    • isAdmin – return true if the user role is admin. 
+    • isEditor – return true if the user role is an editor. 
+    • isGuest – return true if the user role is guest. 
+
+Alguns exemplos de uso
+
+public function delete()
+{
+    if (Gate::allows('isAdmin')) {
+        dd('Admin allowed');
+    } else {
+        dd('You are not Admin');
+    }
+}
+/**
+ * Create a new controller instance.
+ *
+ * @return void
+ */
+public function delete()
+{
+    if (Gate::denies('isAdmin')) {
+        dd('You are not admin');
+    } else {
+        dd('Admin allowed');
+    }
+}
+/**
+ * Create a new controller instance.
+ *
+ * @return void
+ */
+public function delete()
+{
+    $this->authorize('isAdmin');
+}
+/**
+ * Create a new controller instance.
+ *
+ * @return void
+ */
+public function delete()
+{
+    $this->authorize('isUser');
+}
+
+
+use Illuminate\Support\Facades\Gate;
+Gate::define('create-post', function ($user) {
+    return $user->id == 1;
+});
+
+Gate::define('edit-post', function ($user, $post) {
+    return $user->id == $post->user_id;
+});
+Gate::define('delete-post', function ($user, $post) {
+    return $user->id == $post->user_id;
+});// Gate::allows('delete-post', Post::find(10));
+// Gate::allows('edit-post', $post)
+
+Métodos dos gates
+
+    • allows — Checks if the given ability passes.
+    • denies — Negates the allows conditions.
+    • check — Checks if a single or array of abilities are allowed.
+    • any — Checks if any of single or array of abilities passes.
+    • none — Negates the any conditions.
+    • authorize — Checks if the ability is allowed or throws an Illuminate\Auth\Access\AuthorizationException exception.
+
+// use Illuminate\Auth\Access\ResponseGate::allows(string $ability, $arguments = []): bool
+Gate::denies(string $ability, $arguments = []): bool
+Gate::check(array|string $abilities, $arguments = []): bool
+Gate::any(array|string $abilities, $arguments = []): bool
+Gate::none(array|string $abilities, $arguments = []): bool
+Gate::authorize(string $ability, $arguments = []): Response
+
+
+Gate::forUser(User::find(10))->allows('edit-post', Post::find(20));
+
+Gate::before(function ($user, $ability) {
+    if ($user->isSuperAdmin()) {
+        return true;
+    }
+});
+
+Gate::after(function ($user, $ability, $result, $arguments) {
+    if ($user->isSuperAdmin()) {
+        return true;
+    }
+});
+
+
+<?php
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+    * The policy mappings for the application.
+    *
+    * @var array
+    */
+    protected $policies = [
+    // 'App\Model' => 'App\Policies\ModelPolicy',
+    ];
+
+    /**
+    * Register any authentication / authorization services.
+    *
+    * @return void
+    */
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        /**
+        * Define Gate for admin user role
+        * Returns true if user role is set to admin
+        **/ 
+        Gate::define('isAdmin', function($user) {
+           return $user->role == 'admin';
+       });
+
+        /**
+        * Define Gate for editor user role
+        * Returns true if user role is set to editor
+        **/ 
+        Gate::define('isEditor', function($user) {
+            return $user->role == 'editor';
+        });
+
+        /**
+        * Define Gate for guest user role
+        * Returns true if user role is set to guest
+        **/ 
+        Gate::define('isGuest', function($user) {
+            return $user->role == 'guest';
+        });
+    }
+}
+
+Use Gate with Middleware
+When we define our application routes then we can use the default middleware “can:<GATE_NAME>” as given below.
+
+// Admin Only
+Route::middleware('can:isAdmin')->prefix('admin')->group(function () {
+    // Mention all admin routes
+    Route::get('/', 'AdminController@index');
+});
+
+Usando num controller
+
+/**
+* Example 1
+* @return Error Message
+*/
+public function index()
+{
+    if (\Gate::allows('isAdmin')) {
+        echo 'Admin user role is allowed';
+    } else {
+        echo 'Admin are not allowed not allowed';
+    }
+}
+
+/**
+* Example 2
+* @return 403 Error
+*/
+public function index()
+{
+    $this->authorize('isAdmin'); // return 403
+}
+
+Usando can e cannot com blades
+
+@can('isAdmin')
+<h2>Admin View</h2>
+@elsecan('isEditor')
+<h2>Editor View</h2>
+@else
+<h2>Guest View</h2>
+@endcan
+
+

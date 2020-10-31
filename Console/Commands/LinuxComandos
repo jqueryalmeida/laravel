@@ -1,0 +1,4 @@
+Executando comandos do sistema operacional linux
+exec('comando');
+exec('nohup php artisan some:command > /dev/null &');
+

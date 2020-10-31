@@ -1,0 +1,411 @@
+Todas as políticas poderiam ficar em App\Providers\AuthServiceProvider, mas por questão de organização criamos policies para cada grupo e registramos em App\Providers\AuthServiceProvider
+
+Policies são registrados em App\Providers\AuthServiceProvider
+
+php artisan make:policy PolicyPost
+...
+public function updatePost(User $user, Post $post){
+    return $user->id == $post->user_id;
+    // Se usuário logado tiver id idual ao do post retorna tru e permite o acesso, caso contrário nega
+    // ou seja, somente o autor pode editar um post
+}
+
+Se desejar gerar uma classe com os métodos básicos de política para um CRUD chamado Post já incluídos na classe, você pode especificar um --model ao executar o comando:
+
+php artisan make: policy PostPolicy --model = Post
+
+Polícy é uma classe responsável pelas regras de autorização de um modelo específico - no nosso caso, o model Author.
+
+php artisan make:policy AuthorPolicy --model=Author
+
+    public function create(User $user)
+    {
+        return $user->role == 'admin';
+    }
+
+    public function update(User $user, Author $author)
+    {
+        return $user->role == 'admin';
+    }
+
+    public function delete(User $user, Author $author)
+    {
+        return $user->role == 'admin';
+    }
+
+Toda função deve retornar true (ação permitida) ou false (ação proibida) com base no objeto $user, que representa automaticamente o usuário conectado. No nosso caso - para todos os métodos, apenas verificamos se um usuário é um admin.
+
+Também removi o método view() da política gerada - não o usamos no nosso caso. Você também pode remover os parâmetros Author $author dos métodos, para que não filtremos os autores por seus objetos, mas, em teoria, você pode fazer isso mesmo.
+
+
+Registrar a policy e anexar ao model - app/Providers/AuthServiceProvider.php
+
+ 'App\Policies\ModelPolicy',
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        //
+    }
+}
+
+All we need to do is to add our policy and model into $policies array, like this:
+    protected $policies = [
+        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Author' => 'App\Policies\AuthorPolicy',
+    ];
+
+Agora podemos usar nossa políticapolicy para verificar se um usuário pode acessar uma ou outra ação. Podemos verificar isso em vários estágios do aplicativo, mas o que eu prefiro fazer em duas etapas: verificar nos Controladores e nas views.
+
+app/Http/Controllers/AuthorsController.php:
+    public function create()
+    {
+        $this->authorize('create', Author::class);
+        return view('authors.create');
+    }
+
+Sim, é simples assim. O método $this->authorize() verifica se o usuário conectado tem permissão para o método [parâmetro 1] no modelo [parâmetro 2].
+Agora, se estivermos logado como usuário com role = 'user' (não 'admin'), clicaremos no link para Adicionar novo autor e veremos:
+
+Receberemos um erro
+
+
+    public function create()
+    {
+        $this->authorize('create', Author::class);
+        return view('authors.create');
+    }
+
+    public function store(StoreAuthorRequest $request)
+    {
+        $this->authorize('create', Author::class);
+        Author::create($request->all());
+        return redirect()->route('authors.index')->with(['message' => 'Author added successfully']);
+    }
+
+    public function edit($id)
+    {
+        $this->authorize('update', Author::class);
+        $author = Author::findOrFail($id);
+        return view('authors.edit', compact('author'));
+    }
+
+    public function update(StoreAuthorRequest $request, $id)
+    {
+        $this->authorize('update', Author::class);
+        $author = Author::findOrFail($id);
+        $author->update($request->all());
+        return redirect()->route('authors.index')->with(['message' => 'Author updated successfully']);
+    }
+
+    public function destroy($id)
+    {
+        $this->authorize('delete', Author::class);
+        $author = Author::findOrFail($id);
+        $author->delete();
+        return redirect()->route('authors.index')->with(['message' => 'Author deleted successfully']);
+    }
+
+    public function massDestroy(Request $request)
+    {
+        $this->authorize('delete', Author::class);
+        $authors = explode(',', $request->input('ids'));
+        foreach ($authors as $author_id) {
+            $author = Author::findOrFail($author_id);
+            $author->delete();
+        }
+        return redirect()->route('authors.index')->with(['message' => 'Authors deleted successfully']);
+    }
+
+Como você pode ver, eu uso a mesma permissão de criação para verificar os métodos create() e store(), porque eles representam a mesma ação - criação da entrada.
+
+But that’s not all. We also need to hide the links and the buttons from non-admin users, so they wouldn’t even see that opportunity. But please make sure that you always make security check from both front-end and back-end – only then you can feel safe.
+So, in Blade templates we can use simple function/command called @can. It’s basically a block, like @if – @endif or @foreach – @endforeach, but with a different purpose – to check whether logged-in user actually can view that piece of the view. It looks like this:
+resources/views/authors/index.php
+    @can('create', Author::class)
+        <a href="{{ route('authors.create') }}" class="btn btn-default">Add New Author</a>
+        <br /><br />
+    @endcan
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @can('delete', Author::class)
+                <th>
+                    <input type="checkbox" class="checkbox_all">
+                </th>
+                @endcan
+                <th>First name</th>
+                <th>Last name</th>
+                @can('edit', Author::class)
+                <th>Actions</th>
+                @endcan
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($authors as $author)
+            <tr>
+                @can('delete', Author::class)
+                <td><input type="checkbox" class="checkbox_delete"
+                           name="entries_to_delete[]" value="{{ $author->id }}" /></td>
+                @endcan
+                <td>{{ $author->first_name }}</td>
+                <td>{{ $author->last_name }}</td>
+                @can('edit', Author::class)
+                <td>
+                    <a href="{{ route('authors.edit', $author->id) }}" class="btn btn-default">Edit</a>
+                    @can('delete', Author::class)
+                    <form action="{{ route('authors.destroy', $author->id) }}" method="POST"
+                          style="display: inline"
+                          onsubmit="return confirm('Are you sure?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        {{ csrf_field() }}
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    @endcan
+                </td>
+                @endcan
+            </tr>
+            @empty
+                <tr>
+                    <td colspan="4">No entries found.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+    @can('delete', Author::class)
+    <form action="{{ route('authors.mass_destroy') }}" method="post"
+          onsubmit="return confirm('Are you sure?');">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="ids" id="ids" value="" />
+        <input type="submit" value="Delete selected" class="btn btn-danger" />
+    </form>
+    @endcan
+
+Quite a long piece of code, but you should understand it easily. @can – @endcan blocks accept identically the same parameters as $this->authorize method in controllers.
+
+Se estivermos logados como um simples user não poderemos ver nenhhum botão.
+
+
+Creating Policies
+
+Generating Policies
+
+Policies are classes that organize authorization logic around a particular model or resource. For example, if your application is a blog, you may have a Post model and a corresponding PostPolicy to authorize user actions such as creating or updating posts.
+
+You may generate a policy using the make:policy artisan command. The generated policy will be placed in the app/Policies directory. If this directory does not exist in your application, Laravel will create it for you:
+
+php artisan make:policy PostPolicy
+
+The make:policy command will generate an empty policy class. If you would like to generate a class with the basic "CRUD" policy methods already included in the class, you may specify a --model when executing the command:
+
+php artisan make:policy PostPolicy --model=Post
+
+    All policies are resolved via the Laravel service container, allowing you to type-hint any needed dependencies in the policy's constructor to have them automatically injected.
+
+Registering Policies
+
+Once the policy exists, it needs to be registered. The AuthServiceProvider included with fresh Laravel applications contains a policies property which maps your Eloquent models to their corresponding policies. Registering a policy will instruct Laravel which policy to utilize when authorizing actions against a given model:
+
+<?php
+
+namespace App\Providers;
+
+use App\Policies\PostPolicy;
+use App\Post;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
+    protected $policies = [
+        Post::class => PostPolicy::class,
+    ];
+
+    /**
+     * Register any application authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+
+        //
+    }
+}
+
+Policy Auto-Discovery
+
+Instead of manually registering model policies, Laravel can auto-discover policies as long as the model and policy follow standard Laravel naming conventions. Specifically, the policies must be in a Policies directory below the directory that contains the models. So, for example, the models may be placed in the app directory while the policies may be placed in the app/Policies directory. In addition, the policy name must match the model name and have a Policy suffix. So, a User model would correspond to a UserPolicy class.
+
+If you would like to provide your own policy discovery logic, you may register a custom callback using the Gate::guessPolicyNamesUsing method. Typically, this method should be called from the boot method of your application's AuthServiceProvider:
+
+use Illuminate\Support\Facades\Gate;
+
+Gate::guessPolicyNamesUsing(function ($modelClass) {
+    // return policy class name...
+});
+
+    Any policies that are explicitly mapped in your AuthServiceProvider will take precedence over any potential auto-discovered policies.
+
+Writing Policies
+
+Policy Methods
+
+Once the policy has been registered, you may add methods for each action it authorizes. For example, let's define an update method on our PostPolicy which determines if a given User can update a given Post instance.
+
+The update method will receive a User and a Post instance as its arguments, and should return true or false indicating whether the user is authorized to update the given Post. So, for this example, let's verify that the user's id matches the user_id on the post:
+
+<?php
+
+namespace App\Policies;
+
+use App\Post;
+use App\User;
+
+class PostPolicy
+{
+    /**
+     * Determine if the given post can be updated by the user.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return bool
+     */
+    public function update(User $user, Post $post)
+    {
+        return $user->id === $post->user_id;
+    }
+}
+
+You may continue to define additional methods on the policy as needed for the various actions it authorizes. For example, you might define view or delete methods to authorize various Post actions, but remember you are free to give your policy methods any name you like.
+
+    If you used the --model option when generating your policy via the Artisan console, it will already contain methods for the viewAny, view, create, update, delete, restore, and forceDelete actions.
+
+Policy Responses
+
+So far, we have only examined policy methods that return simple boolean values. However, sometimes you may wish to return a more detailed response, including an error message. To do so, you may return an Illuminate\Auth\Access\Response from your policy method:
+
+use Illuminate\Auth\Access\Response;
+
+/**
+ * Determine if the given post can be updated by the user.
+ *
+ * @param  \App\User  $user
+ * @param  \App\Post  $post
+ * @return \Illuminate\Auth\Access\Response
+ */
+public function update(User $user, Post $post)
+{
+    return $user->id === $post->user_id
+                ? Response::allow()
+                : Response::deny('You do not own this post.');
+}
+
+When returning an authorization response from your policy, the Gate::allows method will still return a simple boolean value; however, you may use the Gate::inspect method to get the full authorization response returned by the gate:
+
+$response = Gate::inspect('update', $post);
+
+if ($response->allowed()) {
+    // The action is authorized...
+} else {
+    echo $response->message();
+}
+
+Of course, when using the Gate::authorize method to throw an AuthorizationException if the action is not authorized, the error message provided by the authorization response will be propagated to the HTTP response:
+
+Gate::authorize('update', $post);
+
+// The action is authorized...
+
+Methods Without Models
+
+Some policy methods only receive the currently authenticated user and not an instance of the model they authorize. This situation is most common when authorizing create actions. For example, if you are creating a blog, you may wish to check if a user is authorized to create any posts at all.
+
+When defining policy methods that will not receive a model instance, such as a create method, it will not receive a model instance. Instead, you should define the method as only expecting the authenticated user:
+
+/**
+ * Determine if the given user can create posts.
+ *
+ * @param  \App\User  $user
+ * @return bool
+ */
+public function create(User $user)
+{
+    //
+}
+
+Guest Users
+
+By default, all gates and policies automatically return false if the incoming HTTP request was not initiated by an authenticated user. However, you may allow these authorization checks to pass through to your gates and policies by declaring an "optional" type-hint or supplying a null default value for the user argument definition:
+
+<?php
+
+namespace App\Policies;
+
+use App\Post;
+use App\User;
+
+class PostPolicy
+{
+    /**
+     * Determine if the given post can be updated by the user.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return bool
+     */
+    public function update(?User $user, Post $post)
+    {
+        return optional($user)->id === $post->user_id;
+    }
+}
+
+Policy Filters
+
+For certain users, you may wish to authorize all actions within a given policy. To accomplish this, define a before method on the policy. The before method will be executed before any other methods on the policy, giving you an opportunity to authorize the action before the intended policy method is actually called. This feature is most commonly used for authorizing application administrators to perform any action:
+
+public function before($user, $ability)
+{
+    if ($user->isSuperAdmin()) {
+        return true;
+    }
+}
+
+If you would like to deny all authorizations for a user you should return false from the before method. If null is returned, the authorization will fall through to the policy method.
+
+    The before method of a policy class will not be called if the class doesn't contain a method with a name matching the name of the ability being checked.
+
+Authorizing Actions Using Policies
+
+Via The User Model
+
+The User model that is included with your Laravel application includes two helpful methods for authorizing actions: can and cant. The can method receives the action you wish to authorize and the relevant model. For example, let's determine if a user is authorized to update a given Post model:
+
+if ($user->can('update', $post)) {
+    //
+}
+
+If a policy is registered for the given model, the can method will automatically call the appropriate policy and return the boolean result. If no policy is registered for the model, the can method will attempt to call the Closure based Gate matching the given action name.
+Actions That Don't Require Models
+
+Remember, some actions like create may not require a model instance. In these situations, you may pass a class name to the can method. The class name will be used to determine which policy to use when authorizing the action:
+
+use App\Post;
+
+if ($user->can('create', Post::class)) {
+    // Executes the "create" method on the relevant policy...
+}

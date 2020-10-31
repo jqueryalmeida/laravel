@@ -1,0 +1,3 @@
+- roles: super, admin, manager e comun. super - todas as permissões, admin - tudo mas somente com users, roles e permissions, manager - tudo mas somente com clientes, comum - acesso somente a clientes.index (sem os botões)
+
+

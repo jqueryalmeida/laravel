@@ -1,0 +1,5 @@
+php artisan package:discover --ansi
+
+Criar model, com migration (m), factory (f) e seeder (s)
+
+php artisan make:model Post -mfs
