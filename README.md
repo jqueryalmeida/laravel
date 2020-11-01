@@ -10,7 +10,7 @@ A maior parte do material está em português, mas existem algumas partes ainda 
 
 ## Introdução
 
-[Introdução](Inrtoducao)
+[Introdução](Introducao)
 
 - [Ambiente](Introducao/Ambiente)
 - [Scripts e aliases](Introducao/Scripts)
