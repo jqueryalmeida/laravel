@@ -4,7 +4,7 @@ O Laravel 8 trouxe muitas mudanças importantes. Especialmente no frontend, com 
 
 ## Novidades
 
-[Novidades do Laravel 8](Novidades)
+[Novidades sobre o Laravel 8](Novidades)
 
 ## JetStream
 
@@ -61,7 +61,7 @@ O Laravel 8 trouxe muitas mudanças importantes. Especialmente no frontend, com 
 
 [ACL](ACL)
 
-- [Autenticação](ACL/Autenticação)
+- [Autenticação](ACL/Autenticacao)
 
 ## BootStrap
 
