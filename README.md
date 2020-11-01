@@ -13,7 +13,7 @@ A maior parte do material está em português, mas existem algumas partes ainda 
 [Introdução](Introducao)
 
 - [Ambiente](Introducao/Ambiente)
-- [Scripts e aliases](Introducao/Scripts)
+- [Scripts e aliases](Introducao/Ambiente/Scripts)
 
 
 ## MVC
