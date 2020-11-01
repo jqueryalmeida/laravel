@@ -4,49 +4,94 @@ O Laravel 8 trouxe muitas mudanças importantes. Especialmente no frontend, com 
 
 ## Novidades
 
+[Novidades do Laravel 8](Novidades)
+
 ## JetStream
+
+[JetStream](JetStream)
 
 ## LiveWire
 
+[LiveWire](LiveWire)
+
 ## Inertia
+
+[Inertia](Inertia)
 
 ## Fortify
 
+[Fortify](Fortify)
+
 ## TailWind
 
+[TailWind](TailWind)
 
 ## MVC
 
 ### Controllers
 
+[Controllers](MVC/Controllers)
+
 ### Models
+
+[Models](MVC/Models)
 
 ### Views
 
+[Viewa](MVC/Views)
+
 ### Router
+
+[Router](MVC/Router)
 
 
 ## API
 
+[API](API)
+
 ## Sanctum
 
+[Sanctum](Sanctum)
+
 ## Teams
+
+[Teams](Teams)
     
 ## ACL
-- Autenticação
+
+[ACL](ACL)
+
+- [Autenticação](ACL/Autenticação)
 
 ## BootStrap
 
+[BootStrap](BootStrap)
+
 ## CRUD
 
-##Helpers
+[CRUD](CRUD)
+
+## Helpers
+
+[Helpers](Helpers)
 
 ## Middleware
 
+[MiddleWare](MiddleWare)
+
 ## Dicas
+
+[Dicas](Dicas)
 
 ## Tutoriais
 
+[Tutoriais](Tutoriais)
+
 ## Upgrade
 
+[Upgrade](Upgrade)
+
 ## Referências
+
+[Referências](Referencias.md)
+
