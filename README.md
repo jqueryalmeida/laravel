@@ -47,7 +47,7 @@ A maior parte do material está em português, mas existem algumas partes ainda 
 - [Envio de e-mail](MVC/Views/Email-envio.md)
 - [Combo dinâmica](MVC/Views/combo_form_array.md)
 - [Master Details](MVC/Views/MasterDetails.md)
-- [WebPackMix](MVC/Views/Webpackmix.md]
+- [WebPackMix](MVC/Views/Webpackmix.md)
 - [Dicas](MVC/Views/Dicas.md)
 
 ### Routers
@@ -111,7 +111,7 @@ A maior parte do material está em português, mas existem algumas partes ainda 
 - [Commands](Outros/Console/Commands)
 - [Localization](Outros/Localization)
 - [Provides](Outros/Providers)
-- [Traits](Outros/Traits0
+- [Traits](Outros/Traits)
 - [Tinker](Outros/Tinker.md)
 - [Cache](Outros/Cache)
 - [Erros](Outros/Erros)
