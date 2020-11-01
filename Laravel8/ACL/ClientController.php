@@ -1,5 +1,5 @@
 <?php
-
+// Exemplo de controle do laravel-acl
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;

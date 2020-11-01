@@ -1,3 +1,5 @@
+# Usando o wget para baixar um site inteiro e converter em HTML, CSS e JS
+
 wget \
      --recursive \
      --no-clobber \
@@ -7,4 +9,7 @@ wget \
      --restrict-file-names=windows \
      --no-parent \
          $1
-# sh wget https://ribafs.org
+
+# Exemplo:
+# sh wget.sh https://laravel.com/docs/8.x
+

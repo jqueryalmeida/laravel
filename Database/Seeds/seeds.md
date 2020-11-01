@@ -1,5 +1,7 @@
 # Seeds - são classes que armazenam informações sobre registros de uma tabela.
 
+No laravel 8 as pastass chamam-se database/seeders
+
 ## Para criar a classe de um seed com regitro(s) de uma tabela executamos:
 
 php artisan make:seeder ClientesTableSeeder
@@ -9,6 +11,7 @@ php artisan make:seeder ClientesTableSeeder
 database/seeds
 
 Exemplo
+
 ```php
 <?php
 use Illuminate\Database\Seeder;
@@ -35,6 +38,7 @@ class ClientesTablesSeeder extends Seeder
 }
 ```
 ## Mudar o run() de DatabaseSeeder.php para:
+
 ```php
     public function run()
     {
@@ -43,6 +47,7 @@ class ClientesTablesSeeder extends Seeder
 ```
 
 ## Para gravar os registros na tabela execute
+
 php artisan db:seed --class=ClienteSeeder
 
 ou todos
@@ -50,6 +55,7 @@ ou todos
 php artisan db:seed
 
 ## Seed simples, sem uso do faker
+
 ```php
     public function run()
     {
@@ -75,20 +81,28 @@ php artisan db:seed
 ```
 
 Detalhes:
+
 https://laravel.com/docs/7.x/seeding
 
 
 # Run with all defaults.
+
 php artisan db:seed
 
 # Specify database connection.
+
 php artisan db:seed --database=staging
 
 # Specify a different seeder class.
+
 php artisan db:seed --seeder=ConfigurationSeeder
 
 # Force the seed while in production.
+
 php artisan db:seed --force
 
 # All together.
+
 php artisan db:seed --database=staging --seeder=ConfigurationSeeder --force
+
+

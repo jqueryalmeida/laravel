@@ -11,4 +11,4 @@ public function store(Request $request)
     // The blog post is valid...
 }
 ```
-
+https://laravel.com/docs/8.x/validation#introduction

@@ -141,3 +141,26 @@ Listar extensões instaladas no terminal
 
 code --list-extensions
 
+Executar pelo terminal/prompt
+
+Acessar o diretório do aplicativo e após executar algumas tarefas
+Executar
+.code
+
+Que a pasta do aplicativo será aberta no VSCode
+
+No linux também podemos abrir uma pasta no VSCode estando no gerenciador de arquivos
+Selecionar a pasta e Abrir no Terminal
+
+Busca em todos os arquivos de uma pasta/projeto
+- Edit - Find in files
+- Ctrl+Shift+F
+- Ícone da Lupa 
+
+Procurar e Sobrescrever em todos os arquivos de uma pasta/projeto:
+- Edit - Replace in files
+- Ctrl+Shift+H
+- Ícone da Lupa 
+
+23 Extensões do VS Code para 2020
+https://www.youtube.com/watch?v=tmgpF7Bn3_E

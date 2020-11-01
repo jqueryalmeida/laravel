@@ -1,6 +1,7 @@
 # Criar um factory para popular uma tabela com um seeder
 
 ## Criar migration para contatos
+
 php artisan make:migration create_contatos_table --create=contatos
 
 ## Editar e completar os campos
@@ -20,15 +21,19 @@ php artisan make:migration create_contatos_table --create=contatos
     }
 ```
 ## Criar model
+
 php artisan make:model Contato
 
 ## Criar o factory
+
 php artisan make:factory ContatoFactory
 
 ## Criar o seeder
+
 php artisan make:seeder ContatosTableSeeder
 
 ## Executar
+
 composer dumpautoload
 
 ## Editar o factory criado e deixar assim:
@@ -88,3 +93,4 @@ class ContatosTableSeeder extends Seeder
 ## Executar
 
 php artisan migrate:refresh --seed
+

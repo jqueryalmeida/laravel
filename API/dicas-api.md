@@ -1,4 +1,5 @@
-# Add mensagem em métodos do controller
+# Adicionar mensagem em métodos do controller
+
 ```php
     public function update($id, Request $request)
     {

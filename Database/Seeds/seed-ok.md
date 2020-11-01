@@ -101,14 +101,14 @@ public function up()
     ]);
 }
 
-Seeder local ou em produção
+Seeder testes/local ou em produção
 
 DatabaseSeeder for Local and Production
 
 Sometimes you need to seed some data only in your local environment, but not in production. Or, use different seeder files for different environments.
 
 Not sure if it’s the most elegant way, but here’s how in the past I’ve achieved different seeding for local and production environments.
-
+```php
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -129,5 +129,5 @@ class DatabaseSeeder extends Seeder
         }
     }
 }
-
+```
 

@@ -4,8 +4,7 @@ Migrations são arquivos com classes que descrevem estrutura de tabela.
 
 Ele cria a tabela no banco de dados, por isso o banco já deve estar previamente configurado no .env antes de executar o migrate
 
-As migrations ficam no diretório
-/database/migrations
+As migrations ficam no diretório /database/migrations
 
 ## Uma migration pode conter várias tabelas, mas não é uma boa prática
 
@@ -41,27 +40,33 @@ Ao final do arquivo ferifique que existe um método down(). Atualize-o adequadam
     }
 ```
 ##Após salvar execute para a criação da tabela vendedores
+
 php artisan migrate
 
 Agora pode verificar no gerenciador de bancos de dados a tabela criada
 
 ## Criar model Cliente, migrations e também controller e com --resource
+
 php artisan make:model Cliente -mcr
 
 ## Criar somente model e migration
+
 php artisan make:model Cliente -m
 
 ## Criar somente o controller
+
 php artisan make:controller Cliente
 
 ## Criar somente o model
+
 php artisan make:model Cliente
 
 ## Excluir tabelas do banco e recriar com a mirations existente
+```php
 php artisan migrate:reset
 php artisan migrate:fresh
 php artisan migrate:rollback
-
+```
 ## Chave Estrangeira
 
 O campo da relação deve ser do mesmo tipo, tamanho e ainda unsigned()
@@ -116,17 +121,18 @@ $table->foreign('book_id')->references('id')->on('books');
 $table->foreign('tag_id')->references('id')->on('tags');
 ```
 ## Relacionamentos
+
 $table->fireign('user_id')->references('id')->on('users');
 
 ## Excluir índices
-
+```php
 $table->dropPrimary('authors_id_primary');
 $table->dropUnique('authors_email_unique');
 $table->dropIndex('books_title_index');
 $table->dropForeign('books_author_id_foreign');
-
+```
 ## Tipos de campos das migrations
-
+```php
 $table->id(); 	                Alias of $table->bigIncrements('id').
 $table->foreignId('user_id'); 	Alias of $table->unsignedBigInteger('user_id').
 $table->bigIncrements('id'); 	Auto-incrementing UNSIGNED BIGINT (primary key) equivalent column.
@@ -188,7 +194,8 @@ $table->unsignedSmallInteger('votes'); 	UNSIGNED SMALLINT equivalent column.
 $table->unsignedTinyInteger('votes'); 	UNSIGNED TINYINT equivalent column.
 $table->uuid('id'); 	UUID equivalent column.
 $table->year('birth_year'); 	YEAR equivalent column.
-
+```
 ## Referências
+
 https://laravel.com/docs/7.0/migrations
 

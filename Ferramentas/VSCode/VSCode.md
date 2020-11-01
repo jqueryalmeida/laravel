@@ -134,30 +134,6 @@ Claro que você pode e deve customizar o código para que atenda as suas necessi
 Ctrl+barra
 
 
-## Algumas Extensões
-Seja prudente com a instalação de extensões, pois são muitas. Caso instale e não vá usar desinstale.
-Caso contrário perderá uma boa característica do VSCode que é sua performance.
-
-### Shortcut Menu Bar
-Mostrar vários ícones úteis no menu superior direito:
-- Terminal 
-- Beautfy code: HTML, PHP, JavaScrcipt
-- Dividir editor em 2 na vertical
-
-### Visual studio intellicode
-
-### PHP Intelephense
-Autocompleta e autoformata (F1 - Format)
-
-### Prettier - Code formatter
-F1 - Format Document
-
-### Tema
-Atom one dark Theme
-
-## Outras extensões
-https://marketplace.visualstudio.com/VSCode
-
 ## Teclas de Atalho
 ```html
 Ctrl+N - Abrir novo arquivo
@@ -178,4 +154,112 @@ Windows - https://go.microsoft.com/fwlink/?linkid=832145
 macOS - https://go.microsoft.com/fwlink/?linkid=832143
 Linux - https://go.microsoft.com/fwlink/?linkid=832144
 
+# Editor de código VSCode
+
+## Completando namespace:
+
+Digitar
+
+namespace
+
+Quando começar a digitar o namespace ele completará, como exemplo:
+
+namespace A
+
+Ele completa com
+
+namespace App\Controller;
+
+## Dicas
+
+## Selecionar várias colunas
+- Colocar o cursos no início
+- Alt+Shift+Up ou Down
+- E mover o cursor para cima ou para baixo e para a direita ou esquerda para ter a largura desejada
+
+## Selecionar todas as ocorrências de uma palavra e somente elas
+- Selecione a primeira
+- Tecle: Ctrl+Shift+L ou Ctrl+F2
+
+## Selecionar uma a uma as ocorrências de uma palavra
+- Selecione a palavra
+- Tecle Ctrl+D
+
+#Desfazer seleção - Ctrl+U
+
+Em Settings - Editor: Multi Cursor Modifier - podemos mudar para ctrlCmd
+
+- Comentar um bloco de linhas com //
+- Selecionar o bloco
+- Teclar Ctrl+K+C ou Ctrl+K e Ctrl+C ou Ctrl+/
+- Ctrl+K+U - descomenta
+
+## Comentar com /* ... */ - Ctrl+Shift+A
+
+## Preview de um método
+
+Alt+F12
+
+## Pequeno e útil snippet que permite digitar
+pf
+
+E ele cria
+
+public function $1(){}
+
+File - Preferences - User Snippets - New snippet file for clientes - php (e Enter)
+
+Apague tudo e deixe apenas:
+```php
+{
+	 "Abreviação pf": {
+	 	"scope": "php",
+	 	"prefix": "pf",
+	 	"body": [
+	 		"public function $1(){}",	 	
+	 	],
+	 	"description": "Abreviação para public function"
+	 }
+}
+```
+Lembre de manter as chaves, pois o código é json.
+
+Agora em arquivos tipo PHP ao digitar
+
+pf
+
+E teclar enter ele expandirá em:
+
+public function (){}
+
+
+## Adicionar namespace para uma classe
+
+Quando não sabemos qual o namespace do arquivo atual:
+- Teclar F1
+- Digitar: namespace
+- E teclar enter
+
+Ele inserirá o namespace
+
+Teclas de atalho
+
+Ctrl+N - abrir novo arquivo
+Ctrl+W - fechar janela atual
+Ctrl+S - salvar arquivo atual
+F1 - abrir janela de comandos
+Ctrl+F - localizar arquivos
+Ctrl+Shift+F - localizar em todos os arquivos do projeto atual
+Ctrl+H - localizar e sobrescrever arquivo
+Ctrl+Shift+H - localizar e sobrescrever em todos os arquivos do projeto atual
+
+Backup dos snippets e configurações
+
+.config/Code/User
+  snippets
+  settings.json
+
+Listar extensões instaladas no terminal
+
+code --list-extensions
 

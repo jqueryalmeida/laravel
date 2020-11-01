@@ -1,15 +1,16 @@
-ACL no Laravel 7
+# ACL no Laravel 7
 
 As ACL são listas de controle de acesso. Para isso temos dois grandes componentes: autenticação e autorização. O laravel cuida bem da primeira parte pra nós e da segunda existem ferramentas nativas e de terceiros para isso.
 
 No laravel autorização é implementada através de gates e policies.
 
-Policies
+## Policies
+
 Políticas/policies são classes que ajudam a organizar a lógica de autorização em torno de qualquer recurso de modelo. Ele tem um mecanismo elegante para garantir que os usuários sejam autorizados a executar ações nos recursos.
+
 O principal objetivo da Política do Laravel é fornecer mais controle sobre a autorização, como:
 - Um user pode criar um artigo
 - O único user do artigo é quem pode editar ou excluir ele
-
 
 - Autenticação, que cuida do login verificando se o usuário tem direitos de acessar o aplicativo
 - Autorização, que cuida de conceder e remover privilégios para acesso a diversas seções do site/aplicativo. São atribuídas funções/roles para específicos usuários e cada role tem específicos privilégios. 
@@ -20,10 +21,9 @@ O principal objetivo da Política do Laravel é fornecer mais controle sobre a a
   - comun - direito somente a listar certa(a) seções
   - etc
 
-Permissões e Rules
+## Permissões e Rules
 
 Permissões e funções/roles
-
 
 Exemplos de roles:
 - admin, 
@@ -36,7 +36,7 @@ Exemplos de permissões:
 - edit,
 - delete
 
-Uma role 
+## Uma role 
 - admin tem geralmente as permissões: view, add, edit e delete
 - moderator tem as permissões edit e view
 - basic tem somente a permissão view
@@ -72,6 +72,4 @@ Após registrar um usuário não temos ainda nenhuma role aplicada a ele, então
 Depois disso, você pode criar sua própria função/role com permissão como lista de funções, comorole-list, role-create, role-edit, role-delete, product-list, product-create, product-edit, product-delete. Você pode verificar como atribuir novo usuário e verificar isso.
 
 O pacote Spatie de permissão de roles/função fornece uma maneira de criar acl no laravel. Ele fornecemaneira de atribuir role/função ao usuário, como atribuir permissão ao usuário e como atribuir permissão para roles/funções.
-
-
 

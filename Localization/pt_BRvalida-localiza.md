@@ -7,6 +7,8 @@ Localizar
 
 E mudar para
     'locale' => 'pt_BR',
+
+Ou apenas criar uma cópia
 ```
 ## Encontrar a pasta
 

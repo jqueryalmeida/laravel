@@ -1,6 +1,12 @@
 # Framework Laravel
 
-### Muito conteúdo sobre o framework Laravel. Tutoriais, dicas, exemplos, laravel 8, etc.
+### Conteúdo sobre o framework Laravel. Dicas, pacotes, exemplos, laravel 8, etc.
+
+
+## Esclarecimento
+
+A maior parte do material está em português, mas existem algumas partes ainda em inglês.
+
 
 ## Introdução
 
@@ -56,7 +62,7 @@
 - Join
 - QueryBuilder
 
-- Factories
+### Factories
 
 ### Migrations
 
@@ -65,7 +71,7 @@
 - Migration para alterar tabela
 - Relacionamentos (FK)
 
-### Seeders
+### Seeds
 
 - Exemplos
 - Usando o faker
@@ -91,7 +97,7 @@
 ## CRUD
 
 
-## Código
+## Codando
 
 - Compactação
 - Classe customizada
@@ -104,11 +110,13 @@
 
 
 ## Console
+
 - Artisan
 - Commands
 
 
 ## Outros
+
 - Localization
 - Provides
 - Traits
@@ -119,9 +127,9 @@
 ## Ferramentas
 
 ## Docs
+
 - MkDocs
 - LeRecipe
-
 - Geradores
 - Git
 - Composer
@@ -133,13 +141,15 @@
 
 ## Segurança
 
-## Dicas
+- Bcrypt
+- Hash
+- Blade
+- Session
 
-## Tutoriais
+## Dicas
 
 ## Laravel 8
 
-Muito conteúdo. Confira.
-
 [Laravel 8](laravel8)
+
 

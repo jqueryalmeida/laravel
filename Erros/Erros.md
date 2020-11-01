@@ -30,9 +30,11 @@ composer dump-autoload
 
 
 ## Quando aparecer o erro
+
 No application encryption key has been specified.
 
 Execute
+
 php artisan key:gen
 
 Sempre que baixar um software com Laravel deve rodar este comando
@@ -41,7 +43,7 @@ Sempre que baixar um software com Laravel deve rodar este comando
 ## Mostrar os error no form, caso existam
 
 Dentro da tag <form
-
+```php
 @if($errors->all())
   @foreach($errors->all() as $erro)
     <div class="alert alert-danger" role="alert">
@@ -49,14 +51,17 @@ Dentro da tag <form
     </div>
   @endforeach
 @endif
-
+```
 
 Quando receber um erro de que uma classe não existe ao tentar rodar o seed, exemplo:
+
 Target class [Database\Seeds\PermissionsTableSeeder] does not exist.
 
 Então executar somente a classe reclamada:
+
 php artisan db:seed --class=PermissionsTableSeeder
 
 Uma boa medida é antes executar o
+
 composer dumpautoload
 
