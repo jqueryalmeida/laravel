@@ -5,8 +5,9 @@
 
 ## Esclarecimento
 
-A maior parte do material está em português, mas existem algumas partes ainda em inglês.
+Este material é o resultado de muito estudo, muita pesquisa e experiências em meu desktop para aprender a usar o framework Laravel. E também é uma forma de retribuir tudo que recebi generosamente pela comunidade: Google, tutoriais, forums, grupos, etc.
 
+A maior parte do material está em português, mas existem algumas partes ainda em inglês.
 
 ## Introdução
 
