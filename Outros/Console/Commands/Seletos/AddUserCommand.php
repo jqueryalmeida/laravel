@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -9,26 +8,17 @@ class AddUserCommand extends Command
 {
     protected $signature = 'add:user {name} {email} {password}';
 
-    protected $description = 'Adicionar um registro à tabela users';
+    protected $description = 'Adicionar um user para a tabela users';
  
     public function __construct()
     {
         parent::__construct();
     }
 
-    private function clear(){
-      if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-          system('cls');
-      } else {
-          system('clear');
-      }
-    }
-
     public function handle()
     {
-      $this->clear();
       $this->info(PHP_EOL);
-      $this->info('=== Criação de registro em users ==='.PHP_EOL);
+      $this->info('=== Adicionar novo user em users ==='.PHP_EOL);
 
       $name = $this->argument('name');
       $email = $this->argument('email');

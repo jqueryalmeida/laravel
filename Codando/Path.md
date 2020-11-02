@@ -5,6 +5,9 @@ config_path('app.php')
 
 public_path(); // Path of public/
 
+Exemplo:
+File::copy(base_path('vendor/ribafs/laravel-acl/up/User.php'), app_path('Models/User.php'));
+
 base_path(); // Path of application root
 
 base_path('database'); // Database
