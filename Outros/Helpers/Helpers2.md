@@ -35,7 +35,7 @@ Adotarei a segunda alternativa, com arquivos e classes PHP por categoria.
 
 Baixe estes arquivos da pasta Helpers, aqui:
 
-[Helpers](Heleprs)
+[Helpers](Helpers)
 
 ## Estrutura dos helpers
 
