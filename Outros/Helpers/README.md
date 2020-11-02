@@ -82,6 +82,10 @@ php artisan serve
 
 http://localhost:8000
 
+## Veja um exemplo usando a pasta app/Helpers, com alguns arquivos PHP dentro
+
+[Helpers2](Helpers2.md)
+
 Adaptado do original em inglês
 
 https://code.tutsplus.com/tutorials/how-to-create-a-laravel-helper--cms-28537
