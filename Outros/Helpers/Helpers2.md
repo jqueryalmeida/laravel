@@ -1,4 +1,4 @@
-# Helper para adicionar novo user na tabela users no Laravel 8
+# Helper usando uma pasta com arquivos no Laravel 8
 
 No Laravel um helper é uma função global em PHP, portanto são funções que podemos chamar de qualquer lugar do aplicativo. Muitas destas funções são usadas pelo framework, mas podemos criar nossos próprios helpers. Precisamos evitar de criar helpers para funções já existentes no Laravel e ficar repetitivo.
 
