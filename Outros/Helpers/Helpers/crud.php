@@ -1,11 +1,12 @@
 <?php
-// CRUD genérico, para qualquer Model
 function select($table = 'users', $id){
 
+    // Consultar se existe o id indicado
     $id2 = DB::table($table)->select('id')
         ->where('id', $id)
         ->first();
 
+    // Se não existir
     if(is_null($id2)){
         echo 'Não existe um user com este id: '.$id;
     }else{
@@ -19,14 +20,16 @@ function insert($table = 'users', $fields = []){// Ex: $fields = ['name' => 'Rib
       DB::table($table)->insert(
           $fields
       );
-      echo 'Registro adicionado com sucesso ';//.$fields['id'];
+      echo 'Registro adicionado com sucesso ';
 }
 // Exemplo de uso: return insert('users', ['name' => 'Ribamar FS', 'email' => 'joao@gmail.com', 'password' => bcrypt('123456')]);
 
 function update($table = 'users', $whereValue, $fields = []){ // Ex: 'users', ['id', 2], ['name' => 'João Brito']
 
+    // Consultar se existe o registro através do $whereValue
     $id = DB::table($table)->select('id')->where('id', $whereValue)->first();
 
+    // Caso exista, atualizar
     if(!is_null($id)){
         $affected = DB::table($table)
               ->where('id', $whereValue)
@@ -42,8 +45,10 @@ function update($table = 'users', $whereValue, $fields = []){ // Ex: 'users', ['
 
 function delete($table, $id){
 
+    // Consultar se o registro com $id existe
     $id2 = DB::table($table)->select('id')->where('id', $id)->first();
 
+    // Caso exista
     if(!is_null($id2)){
         $affected = DB::table($table)
               ->where('id', $id)
