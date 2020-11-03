@@ -12,7 +12,7 @@ File::readFile($file)
 
 Retorna o conteúdo de uma linha de um arquivo
 
-File::ReadFileLine($file, 3)
+File::readFileLine($file, 3)
 
 ## fileCountLines($file){
 
