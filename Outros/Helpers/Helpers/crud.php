@@ -3,7 +3,7 @@
 /**
  * select
  * Consultar o banco de dados e retorna o registro de acordo com o id recebido
- * usage: return select( 3,'users' );
+ * usage: return select( 'users', 3 );
  * @param  mixed $table
  * @param  mixed $id
  * @return void
@@ -11,10 +11,22 @@
 function select( $table = 'users', $id ): string
 {
     try {
-        $exists = DB::table( $table )->select( 'id' )->where( 'id' , $id )->first();
+        $idDb = DB::table( $table )->select( 'id' )->where( 'id' , $id )->first();
+        $exists = DB::table( $table )->select( '*' )->where( 'id' , $id )->get();
 
-        if ( $exists ) {
-            return "Existe um registro com o id: {$id}";
+        if (!is_null( $idDb )) {
+            $register = "<b>O registro com id: {$id} segue abaixo</b>";
+            $register .= '<table border="2">';            
+            foreach($exists as $row) {
+                foreach($row as $key => $val) {
+                    $register .= '<tr><td>';
+                    $register .= '<b>' . $key . '</b> : ' . $val;
+                    $register .= '</td></tr>';
+                }
+
+            }
+            $register .= '</table>';
+            return $register;
         }
         throw new Exception ("Não existe um registro com o id: {$id}");
     }
