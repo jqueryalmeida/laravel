@@ -8,18 +8,19 @@
  * @param  mixed $id
  * @return void
  */
-function select( $table = 'users', $id ): void
+function select( $table = 'users', $id ): string
 {
-    $exists = DB::table( $table )->select( 'id' )
-        ->where( 'id', $id )
-        ->first();
+    try {
+        $exists = DB::table( $table )->select( 'id' )->where( 'id' , $id )->first();
 
-    if ( $exists ) {
-        echo "Existe um registro com o id: {$id}";
-        return;
+        if ( $exists ) {
+            return "Existe um registro com o id: {$id}";
+        }
+        throw new Exception ("Não existe um registro com o id: {$id}");
     }
-
-    echo "Não existe um registro com o id: {$id}";
+    catch ( \Throwable $e) {
+        return $e->getMessage();
+    }
 }
 
 /**
@@ -30,12 +31,17 @@ function select( $table = 'users', $id ): void
  * @param  array $fields
  * @return void
  */
-function insert( $table = 'users', $fields = [] )
+function insert( $table = 'users', $fields = [] ): string
 {
-    DB::table( $table )->insert(
-        $fields
-    );
-    echo 'Registro adicionado com sucesso ';
+    try {
+        DB::table( $table )->insert(
+            $fields
+        );
+        return 'Registro adicionado com sucesso ';
+    }
+    catch ( \Throwable $e) {
+        return $e->getMessage();
+    }
 }
 
 /**
@@ -47,17 +53,21 @@ function insert( $table = 'users', $fields = [] )
  * @param  array $fields
  * @return void
  */
-function update( $table = 'users', $whereValue, $fields = [] )
+function update( $table = 'users', $whereValue, $fields = [] ): string
 {
-    $exists = DB::table( $table )->select( 'id' )->where( 'id' , $whereValue )->first();
+    try {
+        $exists = DB::table( $table )->select( 'id' )->where( 'id' , $whereValue )->first();
 
-    if ( !is_null( $exists ) ) {
-        $affected = DB::table( $table )
-              ->where( 'id', $whereValue )
-              ->update( $fields );
-        echo "Client com id: {$whereValue} atualizado com sucesso";
-    }else{
-        echo "Não existe client com este id: {$whereValue}";
+        if ( $exists ) {
+            DB::table( $table )
+                ->where( 'id', $whereValue )
+                ->update( $fields );
+            return "Registro com id: {$whereValue} atualizado com sucesso";
+        }
+        throw new Exception( "Não existe registro com este id: {$whereValue}");
+    }
+    catch ( \Throwable $e) {
+        return $e->getMessage();
     }
 }
 
@@ -69,17 +79,21 @@ function update( $table = 'users', $whereValue, $fields = [] )
  * @param  mixed $id
  * @return void
  */
-function delete( $table, $id )
+function delete( $table, $id ): string
 {
-    $exists = DB::table( $table )->select( 'id' )->where( 'id', $id )->first();
+    try {
+        $exists = DB::table( $table )->select( 'id' )->where( 'id', $id )->first();
 
-    if ( !is_null( $exists ) ) {
-        $affected = DB::table( $table )
-              ->where( 'id', $id )
-              ->delete();
-        echo "Registro com id: {$id} excluído com sucesso";
-    }else{
-        echo "Não existe registro com este id: {$id}";
+        if ( $exists ) {
+            DB::table( $table )
+                ->where( 'id', $id )
+                ->delete();
+            return "Registro com id: {$id} excluído com sucesso";
+        }
+        throw new Exception( "Não existe registro com este id: {$id}");
+    }
+    catch ( \Throwable $e) {
+        return $e->getMessage();
     }
 }
 
