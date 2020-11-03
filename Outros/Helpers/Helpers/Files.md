@@ -2,79 +2,79 @@
 
 $file = '/var/www/html/index.php';
 
-## readFile($file){
+#### readFile($file){
 
 Retorna o conteúdo completo de um arquivo
 ```php
 File::readFile($file)
 ```
-## readFileLine($file, $lineNumber){
+#### readFileLine($file, $lineNumber){
 
 Retorna o conteúdo de uma linha de um arquivo
 ```php
 File::readFileLine($file, 3)
 ```
-## fileCountLines($file){
+#### fileCountLines($file){
 
 Conta o número de linhas de um arquivo
 ```php
 File::fileCountLines()
 ```
-## readInverseFile($file){
+#### readInverseFile($file){
 
 Ler de forma inversa (Do final para o começo) um arquivo, linha a linha
 ```php
 File::readInverseFile($file)
 ```
-## isFileReadable($file){
+#### isFileReadable($file){
 
 Checar se arquivo pode ser lido pelo Apache
 ```php
 File::isFileReadable($file)
 ```
-## isFileWritable($file){
+#### isFileWritable($file){
 
 Checar se arquivo tem permissão de escrita para o Apache
 ```php
 File::isFileWritable($file)
 ```
-## Zip($source, $destination)
+#### Zip($source, $destination)
 
 Compacta uma pasta recursivamente.
 ```php
 File::Zip('/backup/www/testes', '/backup/www/resultado.zip')
 ```
-## folderCopy( $source, $target ) {
+#### folderCopy( $source, $target ) {
 
 Copiar uma pasta com todos os arquivos e subpastas recursivamente
 ```php
 File::folderCopy( '/var/www/html/joomla', /var/www/html/jom )
 ```
-## fileDelete($file){
+#### fileDelete($file){
 
 Excluir um arquivo. Entrar com path full (/var/www/html/src.php) ou relativo ('../src.php')
 ```php
 File::fileDelete($file)
 ```
-## makeDir($dir){
+#### makeDir($dir){
 
 Criar um novo diretório. Entrar com path full (/var/www/html/dir1) ou relativo ('../dir1')
 ```php
 File::makeDir('/var/www/html/portal')
 ```
-## currentFile(){
+#### currentFile(){
 
 Retornar o nome do arquivo atual
 ```php
 File::currentFile()
 ```
-## currentDir(){
+#### currentDir(){
 
 Retornar o nome do diretório atual
 ```php
 File::currentDir()
 ```
-## dirSize(string $directory) {
+#### dirSize(string $directory) {
 
 Retorna o tamanho de um diretório recursivamente em Bytes, KB, MB ou GB dependendo do tamanho
 ```php

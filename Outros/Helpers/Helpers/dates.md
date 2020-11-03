@@ -1,42 +1,42 @@
 # Relação de funções do dates.php com exemplo
 
-## dateAddDays($date, $interval, $format){
+#### dateAddDays($date, $interval, $format){
 ```php
 dateAddDays('2019-03-03', '10 days', 'd/m/Y');
 ```
-## ageYears($dateBirth, $dateNow, $format='%y'){
+#### ageYears($dateBirth, $dateNow, $format='%y'){
 ```php
 ageYears('1956-08-03', '2020-11-02');
 ```
-## year(){ // Ano atual
+#### year(){ // Ano atual
 ```php
 year()
 ```
-## month(){// Mês atual
+#### month(){// Mês atual
 ```php
 month()
 ```
-## day(){// Dia de hoje
+#### day(){// Dia de hoje
 ```php
 day()
 ```
-## tomorrow(){// Dia de amanhã
+#### tomorrow(){// Dia de amanhã
 ```php
 tomorrow()
 ```
-## yesterday(){// Retorna o dia de ontem
+#### yesterday(){// Retorna o dia de ontem
 ```php
 yesterday()
 ```
-## hour(){// Hora atual
+#### hour(){// Hora atual
 ```php
 hour()
 ```
-## minute(){// Minutos atuais
+#### minute(){// Minutos atuais
 ```php
 minute()
 ```
-## *second(){// Segundos atuais
+#### *second(){// Segundos atuais
 ```php
 seconds()
 ```

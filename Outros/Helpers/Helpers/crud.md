@@ -1,4 +1,4 @@
-# Relação das funções do crud.php (genérico para qualquer tabela) com exemplos de uso
+# CRUD genérico, para qualquer tabela, com exemplos de uso
 
 #### select($table = 'users', $id){
 ```php
