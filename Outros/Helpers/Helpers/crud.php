@@ -1,58 +1,57 @@
 <?php
+// CRUD genérico, para qualquer Model
+function select($table = 'users', $id){
 
-use DB;
+    $id2 = DB::table($table)->select('id')
+        ->where('id', $id)
+        ->first();
 
-function qryUser($email){
-    $user = new App\Models\User(); // Para versões anteriores a 8 do laravel, geralmente remover Models\
-
-    $emaile = $user::where('email', $email)->first();
-
-    if(is_null($emaile)){
-        echo 'Não existe um user com este e-mail: '.$email;
+    if(is_null($id2)){
+        echo 'Não existe um user com este id: '.$id;
     }else{
-        echo 'Já existe um user com este e-mail: '.$email;
+        echo 'Existe um user com este id: '.$id;
     }
 }
-// Exemplo de uso: return qryUser('joao@gmail.com');
+// Exemplo de uso: return select(3,'users');
 
-function addUser($name, $email, $pass){
-    $user = new App\Models\User(); // Para versões anteriores a 8 do laravel, geralmente remover Models\
+function insert($table = 'users', $fields = []){// Ex: $fields = ['name' => 'Ribamar FS', 'email' => 'ribafs@gmail.com'];
 
-    $em = $user::where('email', $email)->first();
+      DB::table($table)->insert(
+          $fields
+      );
+      echo 'Registro adicionado com sucesso ';//.$fields['id'];
+}
+// Exemplo de uso: return insert('users', ['name' => 'Ribamar FS', 'email' => 'joao@gmail.com', 'password' => bcrypt('123456')]);
 
-    if(is_null($em)){
-        $user->name = $name;
-        $user->email = $email;
-        $user->password = bcrypt($pass);
-        $user->save();
-        echo 'User com email: '.$email. ' adicionado com sucesso';
+function update($table = 'users', $whereValue, $fields = []){ // Ex: 'users', ['id', 2], ['name' => 'João Brito']
+
+    $id = DB::table($table)->select('id')->where('id', $whereValue)->first();
+
+    if(!is_null($id)){
+        $affected = DB::table($table)
+              ->where('id', $whereValue)
+              ->update($fields);
+        echo 'Client com id: '.$whereValue. ' atualizado com sucesso';
     }else{
-        echo 'Já existe um user com este e-mail: '.$email;
+        echo 'Não existe client com este id: '.$whereValue;
     }
 }
-// Exemplo de uso: // return addUser('João Ribeiro2','joao@gmail.com','123456');
+// Exemplos de uso: 
+// return update('users', 5, ['name' => 'João Brito']);
+// return update('users', 5, ['name' => 'João Brito', 'email' => 'joao@joao.org']);
 
-function updUser($name, $email, $pass){
-    if(!is_null($email)){
-        $affected = DB::table('users')
-              ->where('email', $email)
-              ->update(['name' => $name, 'email' => $email, 'password' => bcrypt($pass)]);
-        echo 'User com email: '.$email. ' atualizado com sucesso';
-    }else{
-        echo 'Não existe um user com este e-mail: '.$email;
-    }
-}
-// Exemplo de uso: // return updUser('João Ribeiro44','joao@gmail.com','123456');
+function delete($table, $id){
 
-function delUser($email){
-    if(!is_null($email)){
-        $affected = DB::table('users')
-              ->where('email', $email)
+    $id2 = DB::table($table)->select('id')->where('id', $id)->first();
+
+    if(!is_null($id2)){
+        $affected = DB::table($table)
+              ->where('id', $id)
               ->delete();
-        echo 'User com email: '.$email. ' excluído com sucesso';
+        echo 'Registro com id: '.$id. ' excluído com sucesso';
     }else{
-        echo 'Não existe um user com este e-mail: '.$email;
+        echo 'Não existe registro com este id: '.$id;
     }
 }
-// Exemplo de uso: return delUser('joao@gmail.com');
+// Exemplo de uso: return delete('users', 5);
 

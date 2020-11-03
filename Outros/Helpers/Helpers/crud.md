@@ -1,19 +1,20 @@
-# Relação de funções do crud.php com exemplo de uso
+# Relação das funções do crud.php (genérico para qualquer tabela) com exemplos de uso
 
-## qryUser($email){
+#### select($table = 'users', $id){
 ```php
-return qryUser('joao@gmail.com');
+return select('users', 5);
 ```
-## addUser($name, $email, $pass){
+#### insert($table = 'users', $fields = []){
 ```php
-return addUser('João Ribeiro2','joao@gmail.com','123456');
+return insert('users', ['name' => 'Ribamar FS', 'email' => 'joao@gmail.com', 'password' => bcrypt('123456')]);
 ```
-## updUser($name, $email, $pass){
+#### update($table = 'users', $whereValue, $fields = []){
 ```php
-return updUser('João Ribeiro44','joao@gmail.com','123456');
+return update('users', 5, ['name' => 'João Brito']);
+return update('users', 5, ['name' => 'João Brito', 'email' => 'joao@joao.org']);
 ```
-## delUser($email){
+#### delete($table = 'users', $id){
 ```php
-return delUser('joao@gmail.com');
+return delete('users', 5);
 ```
 
