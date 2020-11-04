@@ -1,14 +1,46 @@
 # Rotas no Laravel 8
 
-As rotas agora não acessam, por default, os controllers globalmente em app/Http/Controllers. Para que acessem precisamos usar:
+No laravel 7 e anteriores o namespace dos controllers era global e podiamos chamar numa rota assim:
+
+Route::get('/test', 'TestController@index');
+
+Agora no laravel 8, isso não mais funciona. Temos as alternativas:
+
 ```php
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
 ```
 Ou então
+
 ```php
+Route::get('/home', '[App\Http\Controllers\HomeController, 'index');
+```
+Ou
+```php
+Acima adicionar o:
 use App\Http\Controllers\UserController;
+
+E na rota:
 Route::get('/user', [UserController::class, 'index']);
 ```
+
+## Mesmo comportamento do Laravel 8
+
+Para isso editamos o 
+
+app/Providers/RouteServiceProvider.php
+
+E descomentamos a linha com:
+
+    protected $namespace = 'App\\Http\\Controllers';
+
+Após salvar já podemos usar as rotas assim:
+
+Route::get('/test', 'TestController@index');
+
+E sem adicionar ao início o use...
+
+Mas me parece que é bom se adaptar ao estilo default do laravel 8. Se pudermos evitar em nosso aplicativo elementos globais, melhor.
+
 ```php
 php artisan make:controller PhotoController --resource
 
