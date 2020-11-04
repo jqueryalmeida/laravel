@@ -239,8 +239,5 @@ http://apiato.io/
 - https://daylerees.com/code-happy-fluent-query-builder/
 - https://www.educba.com/laravel-collective/
 - https://www.youtube.com/watch?v=ZHke9EmzjFc&feature=emb_logo 
-<<<<<<< HEAD
+- https://github.com/sinnbeck/markdom (Pacote para gerar markdown)
 
-
-=======
->>>>>>> b1be6b9d3d219162bc5818c50933703a6ded6fd0

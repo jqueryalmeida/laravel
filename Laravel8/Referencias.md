@@ -108,4 +108,5 @@ Bootstrap com João Ribeiro
 - https://www.youtube.com/playlist?list=PLXik_5Br-zO9pxSxRtgESquGT2OhR3o8B
 - https://github.com/torrix/laravel-uikit
 - https://dev.to/kingsconsult/how-to-create-laravel-8-helpers-function-global-function-d8n
+- https://www.youtube.com/playlist?list=PLswa9HeoJUq8_8xDGrXBy6MfLtjsSXkTJ - Playlist sobre o Laravel 8
 
