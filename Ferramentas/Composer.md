@@ -24,7 +24,11 @@ sudo apt install composer
 
 ## Atualizar para a versão 2
 
+https://getcomposer.org/upgrade/UPGRADE-2.0.md
 sudo composer self-update --2
+
+https://getcomposer.org/download/
+mv composer.phar /usr/local/bin/composer
 
 ##Testando
 

@@ -1,4 +1,9 @@
 # Join no laravel
+
+## Atenção
+
+Quando você faz um join sem especificar as colunas em SELECT, ele inclui TODAS as colunas de TODAS as tabelas participantes (a de FROM e a de JOINs). Sendo assim, haveria teoricamente dois created_at. Se não me engano é priorizado sempre o último. Minha sugestão é você definir as colunas, sendo possível vc definir a tabela principal seguido de um asterisco. David Rodrigues no grupo Laravel Brasil.
+
 ```php
 Event::select('events.*')
     ->join('client_event', 'events.id', '=', 'client_event.event_id')

@@ -100,7 +100,7 @@
 
 
 </pre>
-                    {{ config('app.name', 'ACL to Laravel 8') }}
+                    {{ config('app.name', 'ACL to Laravel 8 - Demo') }}
                     </h1>
                     <h3>Demo from package <a href="https://github.com/ribafs/laravel-acl" target="_blank">ribafs/laravel-acl</a></h3>
                     <h4>Users and passwords</h4>

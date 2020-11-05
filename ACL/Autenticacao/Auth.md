@@ -6,7 +6,7 @@ php artisan make:auth
 ```
 Mas no 7 precisa executar umas poucas linhas de comando
 ```php
-composer require laravel/ui --dev
+composer require laravel/ui:^2.4
 php artisan ui bootstrap --auth
 ```
 Onde tem bootstrap pode ser:
