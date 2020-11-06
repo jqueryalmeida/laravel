@@ -49,8 +49,25 @@ Versão específica
 - Windows: %USERPROFILE%\AppData\Roaming\Composer\vendor\bin
 - GNU / Linux Distributions: $HOME/.config/composer/vendor/bin or $HOME/.composer/vendor/bin
 
-## Criar projeto
+## Criar projeto com laravel 8
+
 laravel new blog
+
+Com jetstream, teams e livewire
+
+laravel new app --jet --teams --stack=livewire
+
+Silente, sem nenhuma mensagem na tela
+
+laravel new app --jet --teams --stack=livewire --quiet
+
+### Instalando depois do laravel instalado
+
+cd aplicativo
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+ou
+php artisan jetstream:install inertia
 
 ## Instalação local
 
