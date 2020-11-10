@@ -30,18 +30,19 @@ https://laravel.com/docs/7.x#server-requirements
 ## Instalação
 
 ## Instalação global
-
+```
 composer global require laravel/installer
-
+```
 Agora para criar os projetos ou se coloca o laravel no path assim (para Ubuntu):
-
+```
 echo 'export PATH="$PATH:$HOME/.config/composer/vendor/bin"' >> ~/.bashrc
-
+```
 Fechar o terminal e abrir novamente para surtir efeito
 
 Upgrade para o 4
+```
 composer global require "laravel/installer:^4.0"
-
+```
 
 Versão específica
 
@@ -50,39 +51,40 @@ Versão específica
 - GNU / Linux Distributions: $HOME/.config/composer/vendor/bin or $HOME/.composer/vendor/bin
 
 ## Criar projeto com laravel 8
-
+```
 laravel new blog
-
+```
 Com jetstream, teams e livewire
-
+```
 laravel new app --jet --teams --stack=livewire
-
+```
 Silente, sem nenhuma mensagem na tela
-
+```
 laravel new app --jet --teams --stack=livewire --quiet
-
+```
 ### Instalando depois do laravel instalado
-
+```
 cd aplicativo
 composer require laravel/jetstream
 php artisan jetstream:install livewire
 ou
 php artisan jetstream:install inertia
-
+```
 ## Instalação local
-
+```
 composer create-project --prefer-dist laravel/laravel blog
-
+```
 Instalar com uma versão específica e não a atual
-
+```
 composer create-project laravel/laravel="7.*" blog
 
 php composer.phar create-project laravel/laravel="5.8" demo
-
+```
 ## Executar servidor nativo do PHP
+```
 php artisan serve
 http://localhost:8000/
-
+```
 ## Instalar com autenticação
 laravel new project --auth
 
