@@ -59,12 +59,13 @@
 ## Tutoriais/Cursos/Vídeos
 
 - https://quickadminpanel.com/blog/course-lesson-1-laravel-and-default-auth/
-- Curso de Laravel 6 - 55 aulas - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQBtcH_4VR82Dg-aFiVOZBY
+- Curso de Laravel 6 da Especializa TI - 55 aulas - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQBtcH_4VR82Dg-aFiVOZBY
 - Curso de Laravel 5.2 - 48 aulas
 - https://www.youtube.com/playlist?list=PLw6ZnC_OJcva1PZgT_cdURU2pX0Eh6_nt
 - https://github.com/aquinopro/projeto-curso-laravel-investimento
 - Plataforma EAD com Laravel 5.8 - 11 aulas - https://www.youtube.com/playlist?list=PLw6ZnC_OJcvZgn5TvX6jcO71WMVDv6AH1
 - João Ribeiro - 103 aulas - https://www.youtube.com/watch?v=0T5gM1WRNsY&list=PLXik_5Br-zO893qVjjP7a4qg4NYrl33w1
+- Curso de Laravel 8 - 71 aulas - João Ribeiro - https://www.youtube.com/playlist?list=PLXik_5Br-zO9xlSwhhEDUGF81M5mgMUFQ
 - https://laravel.com/docs/5.2/quickstart-intermediate
 - https://docplayer.com.br/3842815-Laravel-5-essencial.html
 - Laravel 7 tutoriais - https://www.codechief.org/article/tag/laravel-7#gsc.tab=0
