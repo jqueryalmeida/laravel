@@ -36,6 +36,10 @@
 - Laravel CRUD Generator from Scratch
 - Diversos
 
+## O que é o Laravel?
+
+https://www.youtube.com/watch?v=F19_YOm-7gQ&fbclid=IwAR1elIJ0FyNadgiFyGxJey-PKAFfYeTYz6R5Mqcn4Vwy5Bl9smkrNRVWiBk
+
 ## Dicas
 
 - https://laravel-tricks.com/

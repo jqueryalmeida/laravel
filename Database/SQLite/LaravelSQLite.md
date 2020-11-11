@@ -1,4 +1,4 @@
-# Trabalhando com SQLie no Laravel 5.8
+# Trabalhando com SQLie no Laravel
 
 ## Instalar
 

@@ -41,6 +41,8 @@ Laravel Livewire Full Course - https://www.youtube.com/playlist?list=PLe30vg_FG4
 - https://devdojo.com/bobbyiliev/how-to-create-contact-form-with-laravel-livewire
 Livewire CRUD - https://morioh.com/p/62231ce2c8a9
 - https://laravel-news.com/laravel-livewire-charts
+- Laravel Livewire - Primeiros Passos - https://www.youtube.com/watch?v=e83fM_0mGa8
+- Cusro gratuito de Livewire - https://www.youtube.com/playlist?list=PLVSNL1PHDWvTH6zKPGTfxEdpv1sN0VbeV
 
 
 ## Fortify
