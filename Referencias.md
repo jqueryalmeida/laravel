@@ -64,6 +64,7 @@ https://www.youtube.com/watch?v=F19_YOm-7gQ&fbclid=IwAR1elIJ0FyNadgiFyGxJey-PKAF
 
 - João Ribeiro - 103 aulas - https://www.youtube.com/watch?v=0T5gM1WRNsY&list=PLXik_5Br-zO893qVjjP7a4qg4NYrl33w1
 - Curso de Laravel 8 - 71 aulas - João Ribeiro - https://www.youtube.com/playlist?list=PLXik_5Br-zO9xlSwhhEDUGF81M5mgMUFQ
+- Curso de Laravel 7 - https://www.youtube.com/playlist?list=PLzKPnb4PnS-IPCS-InYcY5ZEydpRmEUic
 - Curso de Laravel 6 da Especializa TI - 55 aulas - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQBtcH_4VR82Dg-aFiVOZBY
 - Curso de Laravel 5.2 - 48 aulas
 - https://quickadminpanel.com/blog/course-lesson-1-laravel-and-default-auth/
