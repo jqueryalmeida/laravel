@@ -67,6 +67,7 @@ https://www.youtube.com/watch?v=F19_YOm-7gQ&fbclid=IwAR1elIJ0FyNadgiFyGxJey-PKAF
 - Curso de Laravel 7 - https://www.youtube.com/playlist?list=PLzKPnb4PnS-IPCS-InYcY5ZEydpRmEUic
 - Curso de Laravel 6 da Especializa TI - 55 aulas - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQBtcH_4VR82Dg-aFiVOZBY
 - Curso de Laravel 5.2 - 48 aulas
+- Sistema web PHP con laravel y Mysql - 31 aulas - https://www.youtube.com/playlist?list=PLZPrWDz1MolrxS1uw-u7PrnK66DCFmhDR
 - https://quickadminpanel.com/blog/course-lesson-1-laravel-and-default-auth/
 - https://www.youtube.com/playlist?list=PLw6ZnC_OJcva1PZgT_cdURU2pX0Eh6_nt
 - https://github.com/aquinopro/projeto-curso-laravel-investimento
