@@ -44,3 +44,5 @@ Entrar com
 login - root
 senha - root
 ```
+Enenda que o mysql/maraidb foi configurado para ser usado sem senha, esta senha "root" é apenas para driblar o adminer.
+
