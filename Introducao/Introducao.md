@@ -27,7 +27,7 @@ O autor do Laravel, Taylor Otwell, resume os recursos flexíveis do Laravel da s
 • Abraça a comunidade PHP
 
 Versões do Laravel
-´´´sh
+´´´bash
 1.0 	June 2011
 2.0 	September 2011
 3.0 	February 22, 2012
