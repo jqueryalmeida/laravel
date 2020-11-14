@@ -1,4 +1,4 @@
-# Instalação do Laravel 7
+# Instalação do Laravel
 
 Criar aplicativo com Laravel 7
 
