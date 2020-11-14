@@ -1,6 +1,6 @@
-# Introdução ao Framework Laravel 7
+# Introdução ao Framework Laravel
 
-O framework Laravel 7 nos oferece uma estrutura com muitos e bons recursos para a criação de aplicativos, APIs, sites, etc.
+O framework Laravel nos oferece uma estrutura com muitos e bons recursos para a criação de aplicativos, APIs, sites, etc.
 
 O Laravel é, basicamente, sobre equipar e capacitar os desenvolvedores. Seu objetivo é fornecer informações claras, código e recursos simples e bonitos que ajudam os desenvolvedores a aprender, iniciar e desenvolver rapidamente, e escreva um código simples, claro e que dure.
 
