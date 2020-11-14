@@ -27,7 +27,7 @@ O autor do Laravel, Taylor Otwell, resume os recursos flexíveis do Laravel da s
 • Abraça a comunidade PHP
 
 Versões do Laravel
-´´´bash
+```sh
 1.0 	June 2011
 2.0 	September 2011
 3.0 	February 22, 2012
@@ -48,7 +48,7 @@ Versões do Laravel
 6 LTS 	September 3, 2019 	≥ 7.2.0
 7 	March 3, 2020[17] 	≥ 7.2.5[18]
 8 	September 3, 2020 (TBC) 	≥ 7.3.0
-´´´
+```
 Início dos frameworks, seguindo o Rails
 
 CakePHP foi o primeiro em 2005, foi seguido pelo Symfony, CodeIgniter, Zend Framework e Kohana (um fork do CodeIgniter). Yii em 2008 e Aura e Slim em
