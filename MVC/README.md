@@ -5,7 +5,7 @@ O Laravel usa o padrão de arquitetura MCV, que ajuda a organizar o código em 3
 ## Pastas do MVC do Laravel
 
     • Rotas - /routes/web 
-    • Model - /app 
+    • Model - /app/Models (Na versão 8, nas anteriores era na /app) 
     • Controller - /app/Http/Controllers 
     • Views - /resources/views 
     
