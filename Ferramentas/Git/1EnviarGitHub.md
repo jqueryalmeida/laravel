@@ -21,7 +21,7 @@ O projeto está agora hospedado no GitHub e pronto para ser abrigado pelo Packag
 
 ## Criar uma conta no GitHub para o SSH
 
-Em seu desktop Linux execute:
+Em seu desktop Linux execute, entre com uma senha:
 ```php
 cd
 ssh-keygen -t rsa -b 4096 -C "ribafs@gmail.com"

@@ -1,6 +1,6 @@
-# Introdução ao Framework Laravel 7
+# Introdução ao Framework Laravel
 
-O framework Laravel 7 nos oferece uma estrutura com muitos e bons recursos para a criação de aplicativos, APIs, sites, etc.
+O framework Laravel nos oferece uma estrutura com muitos e bons recursos para a criação de aplicativos, APIs, sites, etc.
 
 O Laravel é, basicamente, sobre equipar e capacitar os desenvolvedores. Seu objetivo é fornecer informações claras, código e recursos simples e bonitos que ajudam os desenvolvedores a aprender, iniciar e desenvolver rapidamente, e escreva um código simples, claro e que dure.
 
@@ -26,8 +26,8 @@ O autor do Laravel, Taylor Otwell, resume os recursos flexíveis do Laravel da s
 • Ótimo para iniciantes e desenvolvedores avançados
 • Abraça a comunidade PHP
 
-Versões do Laravel
-
+**Versões do Laravel**
+```sh
 1.0 	June 2011
 2.0 	September 2011
 3.0 	February 22, 2012
@@ -48,8 +48,8 @@ Versões do Laravel
 6 LTS 	September 3, 2019 	≥ 7.2.0
 7 	March 3, 2020[17] 	≥ 7.2.5[18]
 8 	September 3, 2020 (TBC) 	≥ 7.3.0
-
-Início dos frameworks, seguindo o Rails
+```
+**Início dos frameworks, seguindo o Rails**
 
 CakePHP foi o primeiro em 2005, foi seguido pelo Symfony, CodeIgniter, Zend Framework e Kohana (um fork do CodeIgniter). Yii em 2008 e Aura e Slim em
 2010 . 2011 vem o FuelPHP e Laravel
