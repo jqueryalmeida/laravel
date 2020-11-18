@@ -62,17 +62,6 @@ https://www.youtube.com/watch?v=F19_YOm-7gQ&fbclid=IwAR1elIJ0FyNadgiFyGxJey-PKAF
 
 ## Tutoriais/Cursos/Vídeos
 
-- João Ribeiro - 103 aulas - https://www.youtube.com/watch?v=0T5gM1WRNsY&list=PLXik_5Br-zO893qVjjP7a4qg4NYrl33w1
-- Curso de Laravel 8 - 71 aulas - João Ribeiro - https://www.youtube.com/playlist?list=PLXik_5Br-zO9xlSwhhEDUGF81M5mgMUFQ
-- Curso Gratuito de Laravel 8.x - iniciando - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQwfqqY7XSobGuV39KsM46G
-- Laravel 8 novidades (7 aulas) - https://www.youtube.com/playlist?list=PLswa9HeoJUq8_8xDGrXBy6MfLtjsSXkTJ
-- Curso Laravel 8 desde cero (35 aulas) - https://www.youtube.com/playlist?list=PLZ2ovOgdI-kWWS9aq8mfUDkJRfYib-SvF
-- Laravel 8 tutorial (inglês) - https://www.youtube.com/playlist?list=PL8p2I9GklV46dciS4GDzBFHBi0JVIbnzT
-- Curso Laravel Livewire (85 aulas em espanhol) - https://www.youtube.com/playlist?list=PLJjetMSzCM-pV7MYP_9kDsrdgXE3Sx-lq
-- Novedades de Laravel 8 (ao aulas em espanhol) - https://www.youtube.com/playlist?list=PLpKWS6gp0jd9iobc5YIiU_l86bSLhKz12
-- Autenticação no Laravel 8.x (JetStream) - https://www.youtube.com/watch?v=6B-25z5OQPg
-- Curso de Laravel 8 Avançado - Relatórios e Uploads (10 aulas) - https://www.youtube.com/playlist?list=PLxNM4ef1BpxgeuYrbqsAFEEZmwOvv9Y37
-- Curso de Laravel 8 (4 aulas em espanhol) - https://www.youtube.com/playlist?list=PLVkLWeTR-wVwECQTygVuvY5eJYzZlVYiL
 - Curso de Laravel 7 - https://www.youtube.com/playlist?list=PLzKPnb4PnS-IPCS-InYcY5ZEydpRmEUic
 - Curso de Laravel 6 da Especializa TI - 55 aulas - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQBtcH_4VR82Dg-aFiVOZBY
 - Curso Gratuito de Laravel 5.5 (44 aulas) - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQ_qFQd5Kv3Uo4CB2vBZvLY
@@ -88,6 +77,8 @@ https://www.youtube.com/watch?v=F19_YOm-7gQ&fbclid=IwAR1elIJ0FyNadgiFyGxJey-PKAF
 - https://laravel.com/docs/5.2/quickstart-intermediate
 - https://docplayer.com.br/3842815-Laravel-5-essencial.html
 - Laravel 7 tutoriais - https://www.codechief.org/article/tag/laravel-7#gsc.tab=0
+
+Veja também as referências da versão 8
 
 ## Deploy
 
