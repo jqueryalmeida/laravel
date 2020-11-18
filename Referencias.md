@@ -61,6 +61,7 @@
 - https://quickadminpanel.com/blog/course-lesson-1-laravel-and-default-auth/
 - Curso de Laravel 6 - 55 aulas - https://www.youtube.com/playlist?list=PLVSNL1PHDWvQBtcH_4VR82Dg-aFiVOZBY
 - Curso de Laravel 5.2 - 48 aulas
+- Diseño Sistema web PHP con laravel y Mysql - 38 aulas - https://www.youtube.com/watch?v=Zj0pshSSlEo&list=PLZPrWDz1MolrxS1uw-u7PrnK66DCFmhDR
 - https://www.youtube.com/playlist?list=PLw6ZnC_OJcva1PZgT_cdURU2pX0Eh6_nt
 - https://github.com/aquinopro/projeto-curso-laravel-investimento
 - Plataforma EAD com Laravel 5.8 - 11 aulas - https://www.youtube.com/playlist?list=PLw6ZnC_OJcvZgn5TvX6jcO71WMVDv6AH1
@@ -101,6 +102,9 @@
 - https://labs.infyom.com/laravelgenerator/docs/7.0/installation
 - https://github.com/InfyOmLabs/adminlte-generator/
 - https://github.com/InfyOmLabs/coreui-generator/tree/7.0
+
+## Laravel com Admin LTE
+https://www.youtube.com/playlist?list=PLzKPnb4PnS-KrRpnwKAxut1ArZqf7X2Q0
 
 ## E-commerce
 - https://github.com/Prajwal100/Advance-Ecommerce-in-laravel-7
@@ -215,6 +219,11 @@ http://apiato.io/
 ## Laravel CRUD Generator from Scratch
 - https://medium.com/@devlob/laravel-crud-generators-614caddf8bea
 
+## Build a CMS with Laravel
+- https://code.tutsplus.com/courses/build-a-cms-with-laravel
+- https://morioh.com/p/715b2bc28221
+- https://github.com/tutsplus/build-a-cms-with-laravel
+
 ## Diversos
 - https://serversideup.net/courses/api-driven-development-laravel-vuejs/
 - https://medium.com/@taylorotwell
@@ -240,4 +249,5 @@ http://apiato.io/
 - https://www.educba.com/laravel-collective/
 - https://www.youtube.com/watch?v=ZHke9EmzjFc&feature=emb_logo 
 - https://github.com/sinnbeck/markdom (Pacote para gerar markdown)
+- Cursos free em vídeos em inglês - https://coursesity.com/free-tutorials-learn/laravel
 
